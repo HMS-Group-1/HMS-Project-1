@@ -58,3 +58,9 @@
 .navbar .rightSide svg {
     font-size: 40px;
 }
+.navtext{
+    cursor: pointer;
+}
+.navtext:hover{
+    font-size: 40;
+}
