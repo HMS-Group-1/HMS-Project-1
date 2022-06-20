@@ -15,7 +15,11 @@ const PinjamBuku = () => {
             <div class="my-5">
             <NavBar2/>
             </div>
-            <Form/>
+            <div class="row">
+                <div class ="col-12">
+                    <Form/>
+                </div>
+            </div>
         </div>
     )
 
