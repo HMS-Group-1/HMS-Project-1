@@ -1,14 +1,22 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ListGambarBuku } from "../helpers/ListGambarBuku";
 import "../styles/KembalikanBuku.css"
 import "../styles/Navbar.css"
 
 function Form() {
+    const navigate = useNavigate();
     const [searchQuery, setSearchQuery] = useState("");
     const [books, setBookShow] = useState(ListGambarBuku);
     console.log(searchQuery)
     console.log(books)
+    const Reset = () =>{
+        setSearchQuery('')
+    }
+    const PinjamBuku = () =>{
+        navigate('../')
+    }
     return (
         <div class='container-fluid'>
             <div class='row mx-5'>
@@ -96,10 +104,10 @@ function Form() {
                                             <p class='text-justify'>{book.sinopsis}</p>
                                         </div>
                                         <div class='col-6'>
-                                            <button className="bt1">Pinjam Buku</button>
+                                            <button className="bt1" onClick={PinjamBuku}>Pinjam Buku</button>
                                         </div>
                                         <div class='col-6'>
-                                            <button className="bt2">Reset</button>
+                                            <button className="bt2" onClick={Reset}>Reset</button>
                                         </div>
                                     </div>
                                 </div>

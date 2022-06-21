@@ -13,10 +13,10 @@ const NavBar2 = () =>{
         {
           navigate("/kembalikanbuku")
         }
-        // if(name === 'Daftar Buku')
-        // {
-        //   navigate("/pinjambuku")
-        // }
+        if(Nav === 'back')
+        {
+          navigate("../")
+        }
     return(
         <nav class = "navbar navbar-expand-sm bg-light navbar-light">
             <div class = "container-fluid">
@@ -28,6 +28,7 @@ const NavBar2 = () =>{
                         <div class="nav-link h4 navtext" onClick={()=>setNav("kembalikan buku")}>Kembalikan Buku</div>
                     </li>
                 </ul>
+                <button class='btn btn-danger' onClick={()=>setNav("back")}>Back</button>
             </div>
         </nav>
     )
