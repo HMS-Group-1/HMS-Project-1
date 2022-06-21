@@ -1,0 +1,51 @@
+form {
+	padding: 30px;
+	border-radius: 5%;
+	margin-top: 10%;
+	margin-left: 15%;
+	margin-right: 30%;
+	margin-bottom: 50px;
+	width: 70%;
+	height: 90%;
+}
+
+.mb-3 {
+	width: 80%;
+	margin-left: 10%;
+	padding-top: 5px;
+}
+
+.mb-3:first-of-type {
+	margin-top: 15%;
+}
+
+.btn-link {
+	display: block;
+	padding-top: 2.5rem;
+	padding-right: 0;
+	padding-bottom: 0;
+	text-decoration: none;
+	margin-right: 10%;
+	color: black;
+}
+
+hr {
+	margin-top: 10px;
+	width: 80%;
+	margin-left: 10%;
+}
+
+.masukdaftar {
+	width: 80%;
+	margin-left: 10%;
+}
+
+.masukdaftar:first-of-type {
+	background: #8b0000;
+	border-color: #8b0000;
+}
+
+.masukdaftar:last-of-type {
+	background: #3792cb;
+	border-color: #89cff0;
+}

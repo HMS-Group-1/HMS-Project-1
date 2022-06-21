@@ -1,0 +1,17 @@
+.carousel {
+	margin-top: 15%;
+	margin-left: 25%;
+	margin-right: 15%;
+}
+
+.carousel-indicators {
+	display: none;
+}
+
+.carousel-control-prev {
+	display: none;
+}
+
+.carousel-control-next {
+	display: none;
+}
