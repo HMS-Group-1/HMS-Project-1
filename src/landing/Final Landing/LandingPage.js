@@ -10,12 +10,14 @@ function LandingPage() {
 	return (
 		<>
 			<Navy />
-			<div className=" row justify-content-center fs-5 ">
-				<div className="col-md-7 ">
-					<Carous />
-				</div>
-				<div className="col-md-4 ">
-					<LogInOut />
+			<div className="page">
+				<div className=" row justify-content-center fs-5 ">
+					<div className="col-md-7 ">
+						<Carous />
+					</div>
+					<div className="col-md-4 ">
+						<LogInOut />
+					</div>
 				</div>
 			</div>
 			<Futer />

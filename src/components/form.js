@@ -59,7 +59,6 @@ function Form() {
                     {books
                         .filter((book) => {
                             if (searchQuery === "") {
-
                                 return 0;
                             } else if (
                                 book.name.toLowerCase() === (searchQuery.toLowerCase())
