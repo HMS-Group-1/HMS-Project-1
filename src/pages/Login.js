@@ -1,5 +1,13 @@
+import React from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logobukabuku.png';
-function Login() {
+
+const Login = () => {
+	const [email, setemail] = useState('');
+	const [password, setPassword] = useState('');
+	const navigateTo = useNavigate();
+
 	return (
 		<div className=" desktop:flex desktop:items-center desktop:h-screen desktop:justify-center pt-7">
 			<div className="desktop:w-5/12 laptop: w-full mobile:w-full tablet:w-full ">
@@ -36,6 +44,6 @@ function Login() {
 			</div>
 		</div>
 	);
-}
+};
 
 export default Login;
