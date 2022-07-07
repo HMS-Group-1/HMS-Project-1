@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import logo from '../assets/logobukabuku.png';
 
 function Register() {
@@ -34,12 +35,14 @@ function Register() {
 					<label className="pb-2" for="no_telp">
 						Nomor Telepon
 					</label>
-					<input class=" appearance-none border rounded w-full py-2 px-3 mb-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="no_telp" type="text" placeholder="08xxxxxxxx" />
-					<div class="items-center justify-between pt-4 tablet:flex tablet:flex-col mobile:flex mobile:flex-col">
+					<input class=" appearance-none border rounded w-full py-2 px-3 mb-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="no_telp" type="text" placeholder="08xxxxxxxx" />
+					<div class="items-center justify-between  tablet:flex tablet:flex-col mobile:flex mobile:flex-col">
 						<button class="bg-yellow-200 text-black w-full font-bold py-2 px-4 rounded-md mb-3 focus:outline-none focus:shadow-outline tablet:pt-3" type="button">
 							masuk
 						</button>
-						<p class="inline-block align-baseline font-bold text-sm text-blue-500 tablet:pt-2 ">Sudah punya akun? Masuk di sini</p>
+						<p class="inline-block align-baseline font-bold text-sm text-blue-500 tablet:pt-2 ">
+							Sudah punya akun? <Link to={'/'}> Masuk di sini</Link>{' '}
+						</p>
 					</div>
 				</form>
 			</div>
