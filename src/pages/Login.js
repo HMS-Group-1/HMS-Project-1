@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logobukabuku.png';
@@ -7,6 +7,10 @@ const Login = () => {
 	const [email, setemail] = useState('');
 	const [password, setPassword] = useState('');
 	const navigateTo = useNavigate();
+
+	const Auth = async (e) => {
+		e.preventDefault();
+	};
 
 	return (
 		<div className=" desktop:flex desktop:items-center desktop:h-screen desktop:justify-center pt-7">
