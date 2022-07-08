@@ -28,18 +28,16 @@ const Login = () => {
 				setMessage(error.response.data.message);
 				setEmailErrorMessage('');
 				setPasswordErrorMessage('');
-				if ((error.response.data.errors.length = 1)) {
-					if (error.response.data.errors[0].msg.includes('Mohon')) {
-						setEmailErrorMessage(error.response.data.errors[0].msg);
-						setMessage('');
-						setPasswordErrorMessage('');
-					} else {
-						if ((error.response.data.errors[0].param = 'password')) {
-							setPasswordErrorMessage(error.response.data.errors[0].msg);
+				if (error.response.data.errors) {
+					error.response.data.errors.forEach((e) => {
+						if (e.param) {
+							if (e.param === 'email') setEmailErrorMessage(e.msg);
+							if (e.param === 'password') setPasswordErrorMessage(e.msg);
+						} else {
 							setEmailErrorMessage('');
-							setMessage('');
+							setPasswordErrorMessage('');
 						}
-					}
+					});
 				}
 			}
 		}
@@ -52,7 +50,7 @@ const Login = () => {
 					<img className=" desktop:w-12/12 w-9/12 tablet:mx-12 tablet:my-2  mobile:mx-12 " src={logo} alt="logo" />
 				</div>
 				<figure className="tablet:mx-12 mobile:mx-12">
-					<blockquote className="font-poppins font-semibold py-3 text-justify desktop:leading-normal desktop:text-2xl tablet:text-xl tablet:my-2   tablet:w-full mobile:text-base">
+					<blockquote className="font-poppins font-semibold py-3 text-justify desktop:leading-normal desktop:text-2xl tablet:text-xl tablet:leading-loose tablet:my-2 tablet:w-full mobile:pt-3 mobile:text-base">
 						Buku adalah pembawa peradaban. Tanpa buku, sejarah itu sunyi, sastra itu bodoh, sains lumpuh, pemikiran dan spekulasi terhenti. Buku adalah mesin perubahan, jendela, di dunia, mercusuar yang didirikan di lautan waktu
 					</blockquote>
 					<figcaption className="font-poppins font-semibold desktop:text-2xl tablet:text-xl tablet:pb-5 mobile:text-base"> -Barbara W.Tuchman</figcaption>
@@ -70,7 +68,7 @@ const Login = () => {
 					<input
 						class="appearance-none border rounded w-full py-2 px-3 mb-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 						id="email"
-						type="email"
+						type="text"
 						placeholder="@email"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
