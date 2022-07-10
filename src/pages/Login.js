@@ -27,7 +27,6 @@ const Login = () => {
 				});
 		} catch (error) {
 			if (error.response) {
-				console.log(error.response);
 				setMessage(error.response.data.message);
 				setEmailErrorMessage('');
 				setPasswordErrorMessage('');
