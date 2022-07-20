@@ -35,9 +35,6 @@ const Login = () => {
 						if (e.param) {
 							if (e.param === 'email') setEmailErrorMessage(e.msg);
 							if (e.param === 'password') setPasswordErrorMessage(e.msg);
-						} else {
-							setEmailErrorMessage('');
-							setPasswordErrorMessage('');
 						}
 					});
 				}

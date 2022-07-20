@@ -41,11 +41,6 @@ const Register = () => {
 							if (e.param === 'email') setEmailErrorMessage(e.msg);
 							if (e.param === 'password') setPasswordErrorMessage(e.msg);
 							if (e.param === 'no_telp') setNo_telpErrorMessage(e.msg);
-						} else {
-							setEmailErrorMessage('');
-							setPasswordErrorMessage('');
-							setNamaErrorMessage('');
-							setNo_telpErrorMessage('');
 						}
 					});
 				}
