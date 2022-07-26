@@ -12,6 +12,7 @@ import searchIllustration from '../assets/searching-data.svg';
 
 const ListBooks = () => {
     const context = useContext(ContextProvider);
+    // console.log(context.token)
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(false);
     const [search, setSearch] = useState({
@@ -19,7 +20,13 @@ const ListBooks = () => {
         maxPage: 1,
         search_query: ""
     })
-    console.log(context.isLogin)
+    // console.log(context.isLogin)
+    const getToken = async() =>{
+        const response = await axios.get('http://localhost:5000/token');
+        context.setToken(response.data.accessToken)
+        console.log(`token : ${context.token}`);
+    }
+
     const getBooks = async () => {
         const response = await axios.get('http://localhost:5000/book', {
             params: {
@@ -27,8 +34,10 @@ const ListBooks = () => {
                 limit: 12,
                 search_query: search.search_query
             }
-        });
-        console.log(response.data)
+        },{
+        headers: {"Authorization" : `Bearer ${context.token}`}}
+        );
+        // console.log(response.data)
         setBooks(response.data.hasilBuku);
         setSearch(prevState => ({
             ...prevState,
@@ -44,7 +53,7 @@ const ListBooks = () => {
             ...prevState,
             page: pageNumber
         }))
-        console.log(search.page)
+        // console.log(search.page)
     };
 
     const btnSearchHandler = async () => {
@@ -57,7 +66,7 @@ const ListBooks = () => {
                 search_query: input
             }
         });
-        console.log(response.data)
+        // console.log(response.data)
         setBooks(response.data.hasilBuku);
         setSearch(prevState => ({
             ...prevState,
@@ -76,7 +85,7 @@ const ListBooks = () => {
                     search_query: input
                 }
             });
-            console.log(response.data)
+            // console.log(response.data)
             setBooks(response.data.hasilBuku);
             setSearch(prevState => ({
                 ...prevState,
@@ -87,9 +96,10 @@ const ListBooks = () => {
     }
 
     useEffect(() => {
+        getToken();
         setLoading(true);
         getBooks();
-        console.log(books)
+        // console.log(books)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [search.page])
 
