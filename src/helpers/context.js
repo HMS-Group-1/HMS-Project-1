@@ -5,10 +5,9 @@ export const ContextProvider = React.createContext(null);
 
 export const ContextWrapper = (props) => {
     const [isLogin, setIsLogin] = useState(false);
-    const [token, setToken] = useState('');
 
     return(
-        <ContextProvider.Provider value={{isLogin, setIsLogin, token, setToken}}>
+        <ContextProvider.Provider value={{isLogin, setIsLogin}}>
             {props.children}
         </ContextProvider.Provider>
     )

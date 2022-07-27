@@ -1,107 +1,115 @@
-import React, { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
-import Navbar from '../components/Navbar'
-import { ContextProvider } from '../helpers/context';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 import axios from 'axios';
 import { useEffect } from 'react';
-import { toBase64, truncateString, kategori, rak } from '../helpers/constant';
+import { toBase64, truncateString } from '../helpers/constant';
 import SketelonBooks from '../components/SketelonBooks';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import searchIllustration from '../assets/searching-data.svg';
 
+
 const ListBooks = () => {
-    const context = useContext(ContextProvider);
-    // console.log(context.token)
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [kategori, setKategori] = useState([]);
     const [search, setSearch] = useState({
         page: 0,
         maxPage: 1,
         search_query: ""
-    })
-    // console.log(context.isLogin)
-    const getToken = async() =>{
-        const response = await axios.get('http://localhost:5000/token');
-        context.setToken(response.data.accessToken)
-        console.log(`token : ${context.token}`);
-    }
+    });
+
+    const getKategori = async () => {
+        const response =  await axios.get('http://localhost:5000/kategori/');
+        setKategori(response.data)
+    };
 
     const getBooks = async () => {
+        const res = await axios.get('http://localhost:5000/token',{
+            withCredentials: true
+        });
+        const tokenRef = res.data.accessToken
         const response = await axios.get('http://localhost:5000/book', {
             params: {
                 page: search.page,
                 limit: 12,
                 search_query: search.search_query
-            }
-        },{
-        headers: {"Authorization" : `Bearer ${context.token}`}}
+            },
+            headers: { 'Authorization': `Bearer ${tokenRef}` }
+        }
         );
-        // console.log(response.data)
         setBooks(response.data.hasilBuku);
         setSearch(prevState => ({
             ...prevState,
             maxPage: response.data.jumlahHalaman
-        }))
-        setLoading(false)
+        }));
+        setLoading(false);
     };
 
     const pageNumberHandler = (e, val) => {
-        // (e, val) => { context.setPage(val)
         const pageNumber = val - 1;
         setSearch(prevState => ({
             ...prevState,
             page: pageNumber
-        }))
-        // console.log(search.page)
+        }));
     };
 
     const btnSearchHandler = async () => {
-        setLoading(true)
-        const input = document.getElementById('search').value
-        const response = await axios.get('http://localhost:5000/book', {
-            params: {
-                page: 0,
-                limit: 12,
-                search_query: input
-            }
+        setLoading(true);
+        const input = document.getElementById('search').value;
+        const res = await axios.get('http://localhost:5000/token',{
+            withCredentials: true
         });
-        // console.log(response.data)
+        const tokenRef = res.data.accessToken;
+        const response = await axios.get('http://localhost:5000/book', {
+                params: {
+                    page: 0,
+                    limit: 12,
+                    search_query: input
+                },
+                headers: { 'Authorization': `Bearer ${tokenRef}` }
+            });
         setBooks(response.data.hasilBuku);
         setSearch(prevState => ({
             ...prevState,
             maxPage: response.data.jumlahHalaman
-        }))
-        setLoading(false)
+        }));
+        setLoading(false);
     }
+
     const handleKeydown = async (e) => {
-        const input = document.getElementById('search').value
+        const res = await axios.get('http://localhost:5000/token',{
+            withCredentials: true
+        });
+        const tokenRef = res.data.accessToken;
+        const input = document.getElementById('search').value;
         if (e.key === 'Enter') {
-            setLoading(true)
+            setLoading(true);
             const response = await axios.get('http://localhost:5000/book', {
                 params: {
                     page: 0,
                     limit: 12,
                     search_query: input
-                }
+                },
+                headers: { 'Authorization': `Bearer ${tokenRef}` }
             });
-            // console.log(response.data)
             setBooks(response.data.hasilBuku);
             setSearch(prevState => ({
                 ...prevState,
                 maxPage: response.data.jumlahHalaman
-            }))
-            setLoading(false)
+            }));
+            setLoading(false);
         }
     }
 
     useEffect(() => {
-        getToken();
         setLoading(true);
+        getKategori();
         getBooks();
-        // console.log(books)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [search.page])
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [search.page]);
 
     return (
         <div className="bg-white h-full">
@@ -112,7 +120,6 @@ const ListBooks = () => {
                         <input type="text"
                             id='search'
                             className='py-2 px-4 w-full shadow appearance-none border rounded leading-tight focus:outline-none focus:shadow-outline'
-                            // onChange={btnInputSearchHandler}
                             onKeyDown={handleKeydown}
                             placeholder='Cari nama atau deskripsi...' />
                         <button
@@ -127,23 +134,22 @@ const ListBooks = () => {
                             <div className="h-[290px] w-[160px] desktop:w-[180px] rounded-md shadow-md bg-slate-400/10 justify-center mb-4 shrink">
                                 <div className="h-[180px] relative w-full object-cover rounded-br-lg rounded-bl-lg">
                                     <img src={`data:image/png;base64, ${toBase64(book.gambar.data)}`} alt={book.judul_buku} className='h-full w-full object-cover rounded-br-lg rounded-bl-lg' />
-                                    <p className='z-10 absolute top-0 right-0 text-white text-sm mt-2 bg-biru w-fit px-2 m-0 rounded-tl-xl rounded-bl-xl'>{kategori[`${book.kategori_id}`]}</p>
+                                    <p className='z-10 absolute top-0 right-0 text-white text-sm mt-2 bg-biru w-fit px-2 m-0 rounded-tl-xl rounded-bl-xl'>{kategori[book.kategori_id-1].kategori_nama}</p>
                                 </div>
                                 <div className="flex flex-col m-2">
                                     <p className='text-sm text-slate-900 font-medium'>{truncateString(book.judul_buku, 33)}</p>
+                                    <p className='text-xs text-slate-600'>Tahun  : {book.tahun_terbit}</p>
                                     <p className='text-xs text-slate-600'>Stock : {book.stok}</p>
-                                    <p className='text-xs text-slate-600'>Tahun : {book.tahun_terbit}</p>
-                                    <p className='text-xs text-slate-600'>Rak : {rak[`${book.rak_id}`]}</p>
                                 </div>
                             </div>
                         </Link>
                     ))}
                 </div>
                 {books.length < 1 &&
-                        <div className='w-full flex flex-col items-center content-center'>
-                            <img src={searchIllustration} alt="Search Illustration" className='max-w-[300px]' />
-                            <p>Tidak ada buku<span className='font-semibold'> {search.search_query}</span>  didalam database</p>
-                        </div>}
+                    <div className='w-full flex flex-col items-center content-center'>
+                        <img src={searchIllustration} alt="Search Illustration" className='max-w-[300px]' />
+                        <p>Tidak ada buku<span className='font-semibold'> {search.search_query}</span>  didalam database</p>
+                    </div>}
                 {books.length >= 1 &&
                     <div className='flex justify-center my-4'>
                         <Stack spacing={2}>
