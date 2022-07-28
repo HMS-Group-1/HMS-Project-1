@@ -1,31 +1,13 @@
-<<<<<<< HEAD
 .App {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  font-family: 'Poppins' sans-serif;
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	font-family: 'Poppins' sans-serif;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  background-color: #fafafa;
+	margin: 0;
+	padding: 0;
+	background-color: #fafafa;
 }
-
-=======
-.App {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  font-family: 'Poppins' sans-serif;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #fafafa;
-}
-
->>>>>>> bf61aabcddd8a645ab36c3c2b2c4c9124f2b0de5
