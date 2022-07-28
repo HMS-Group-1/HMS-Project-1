@@ -3,12 +3,14 @@ import Logo from '../assets/capture1.PNG';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Navbar.css';
 import { ContextProvider } from '../helpers/context';
+import axios from 'axios';
 
 function Navbar() {
 	const navigateTo = useNavigate();
 	const context = useContext(ContextProvider);
 	const logOutHandler = async () => {
 		try {
+			await axios.delete('http://localhost:5000/logout');
 			context.setIsLogin(false);
 			navigateTo('/');
 		} catch (error) {
