@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import axios from 'axios';
 import { useEffect } from 'react';
-import { toBase64, truncateString } from '../helpers/constant';
+import { toBase64, truncateString, toTitleCase } from '../helpers/constant';
 import SketelonBooks from '../components/SketelonBooks';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
@@ -134,7 +134,7 @@ const ListBooks = () => {
                             <div className="h-[290px] w-[160px] desktop:w-[180px] rounded-md shadow-md bg-slate-400/10 justify-center mb-4 shrink">
                                 <div className="h-[180px] relative w-full object-cover rounded-br-lg rounded-bl-lg">
                                     <img src={`data:image/png;base64, ${toBase64(book.gambar.data)}`} alt={book.judul_buku} className='h-full w-full object-cover rounded-br-lg rounded-bl-lg' />
-                                    <p className='z-10 absolute top-0 right-0 text-white text-sm mt-2 bg-biru w-fit px-2 m-0 rounded-tl-xl rounded-bl-xl'>{kategori[book.kategori_id-1].kategori_nama}</p>
+                                    <p className='z-10 absolute top-0 right-0 text-white text-sm mt-2 bg-biru w-fit px-2 py-1 m-0 rounded-tl-xl rounded-bl-xl'>{toTitleCase(kategori[book.kategori_id-1].kategori_nama)}</p>
                                 </div>
                                 <div className="flex flex-col m-2">
                                     <p className='text-sm text-slate-900 font-medium'>{truncateString(book.judul_buku, 33)}</p>
