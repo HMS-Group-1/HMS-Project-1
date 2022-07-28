@@ -1,53 +1,53 @@
-import axios from 'axios';
+import axios from '../helpers/interceptor';
 import React, { useState, useEffect } from 'react';
-import jwt_decode from 'jwt-decode';
-import { useNavigate } from 'react-router-dom';
 import './Admintest.css';
 
 const Admintest = () => {
 	const [response, setResponse] = useState([]);
-	const [expire, setExpire] = useState('');
-	const navigateTo = useNavigate();
+	// const [expire, setExpire] = useState('');
+	// const navigateTo = useNavigate();
+	console.log(response);
 
 	useEffect(() => {
-		getNewToken();
+		// getNewToken();
 		getAllUsers();
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-	const getNewToken = async () => {
-		try {
-			const response = await axios.get('http://localhost:5000/token');
-			console.log(response);
-			const decoded = jwt_decode(response.data.accessToken);
-			console.log(decoded);
-			setExpire(decoded.exp);
-		} catch (error) {
-			if (error.response) {
-				navigateTo('/');
-			}
-		}
-	};
+	// const getNewToken = async () => {
+	// 	try {
+	// 		const response = await axios.get('http://localhost:5000/token');
+	// 		console.log(response);
+	// 		const decoded = jwt_decode(response.data.accessToken);
+	// 		console.log(decoded);
+	// 		setExpire(decoded.exp);
+	// 	} catch (error) {
+	// 		if (error.response) {
+	// 			navigateTo('/');
+	// 		}
+	// 	}
+	// };
 
-	const newInstance = axios.create();
-	newInstance.interceptors.request.use(
-		async (config) => {
-			const date = new Date();
-			if (expire * 1000 < date.getTime()) {
-				const response = await axios.get('http://localhost:5000/token');
-				console.log(response);
-				config.headers.Authorization = `Bearer ${response.data.accessToken}`;
-				const decoded = jwt_decode(response.data.accessToken);
-				setExpire(decoded.exp);
-			}
-			return config;
-		},
-		(error) => {
-			return Promise.reject(error);
-		}
-	);
+	// const newInstance = axios.create();
+	// newInstance.interceptors.request.use(
+	// 	async (config) => {
+	// 		const date = new Date();
+	// 		if (expire * 1000 < date.getTime()) {
+	// 			const response = await axios.get('http://localhost:5000/token');
+	// 			console.log(response);
+	// 			config.headers.Authorization = `Bearer ${response.data.accessToken}`;
+	// 			const decoded = jwt_decode(response.data.accessToken);
+	// 			setExpire(decoded.exp);
+	// 		}
+	// 		return config;
+	// 	},
+	// 	(error) => {
+	// 		return Promise.reject(error);
+	// 	}
+	// );
 
 	const getAllUsers = async () => {
-		const listUsers = await newInstance.get('http://localhost:5000/admin/user');
+		const listUsers = await axios.get('http://localhost:5000/admin/user');
+		console.log(listUsers);
 		setResponse(listUsers.data);
 	};
 
