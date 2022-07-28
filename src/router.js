@@ -13,6 +13,7 @@ function Router() {
 			<Route path="/" element={<Login />} />
 			<Route path="/register" element={<Register />} />
 			<Route path="/book" element={<ProtectedRoute><ListBooks /></ProtectedRoute>} />
+			<Route path="/detail" element={<ProtectedRoute><ListBooks /></ProtectedRoute>} />
 			<Route path="/pinjambuku" element={<PinjamBuku />} />
 			<Route path="/kembalikanbuku" element={<PinjamBuku />} />
 			<Route path="/daftaruser" element={<PinjamBuku />} />

@@ -130,7 +130,7 @@ const ListBooks = () => {
                 <div className="h-full w-full grid grid-cols-2 tablet:grid-cols-4  laptop:grid-cols-5 gap-4 tablet:gap-8 justify-between items-start content-between">
                     {loading && Array.from({ length: 10 }, (v, i) => <SketelonBooks key={i} />)}
                     {books && books.filter(book => book.judul_buku.toLocaleLowerCase().includes('')).map((book, index) => (
-                        <Link to={`book_detail/${book.id}`} key={index}>
+                        <Link to={`detail/${book.id}`} key={index}>
                             <div className="h-[290px] w-[160px] desktop:w-[180px] rounded-md shadow-md bg-slate-400/10 justify-center mb-4 shrink">
                                 <div className="h-[180px] relative w-full object-cover rounded-br-lg rounded-bl-lg">
                                     <img src={`data:image/png;base64, ${toBase64(book.gambar.data)}`} alt={book.judul_buku} className='h-full w-full object-cover rounded-br-lg rounded-bl-lg' />
