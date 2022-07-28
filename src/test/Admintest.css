@@ -1,0 +1,22 @@
+* {
+	font-size: 20px;
+}
+
+h1 {
+	font-size: 25px !important;
+	text-align: center;
+	margin-top: 20px !important;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin-bottom: 20px;
+}
+
+.box {
+	margin: 25px;
+	padding: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0);
+}

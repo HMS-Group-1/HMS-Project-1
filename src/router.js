@@ -4,11 +4,13 @@ import Login from './pages/Login';
 
 import PinjamBuku from './pages/pinjambuku';
 import Register from './pages/Register';
+import Admintest from './test/Admintest';
 
 function Router() {
 	return (
 		<Routes>
 			<Route path="/" element={<Login />} />
+			<Route path="/admin/user" element={<Admintest />} />
 			<Route path="/register" element={<Register />} />
 			<Route path="/pinjambuku" element={<PinjamBuku />} />
 			<Route path="/kembalikanbuku" element={<PinjamBuku />} />
