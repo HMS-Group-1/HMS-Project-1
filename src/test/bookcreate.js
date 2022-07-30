@@ -3,23 +3,23 @@ import { useNavigate } from 'react-router-dom';
 import axios from '../helpers/interceptor';
 import './Admintest.css';
 
-function toBase64(img) {
-	//arr = new Uint8Array(arr) if it's an ArrayBuffer
-	return btoa(img.reduce((data, byte) => data + String.fromCharCode(byte), ''));
-}
-
 const Bookcreate = () => {
 	const [judul_buku, setjudul_buku] = useState('');
+	const [judulError, setJudulError] = useState('');
 	const [kategori_id, setKategori_id] = useState([]);
+	const [kategoriError, setKategoriError] = useState('');
 	const [selectedKategori, setSelectedKategori] = useState('');
 	const [deskripsi, setDeskripsi] = useState('');
-	const [gambar, setGambar] = useState('');
+	const [deskripsiError, setDeskripsiError] = useState('');
 	const [preview, setPreview] = useState('');
 	const [fileToUpload, setFileToUpload] = useState('');
 	const [stok, setStok] = useState('');
+	const [stokError, setStokError] = useState('');
 	const [rak_id, setRak_id] = useState([]);
+	const [rakError, setRakError] = useState('');
 	const [selectedRak, setSelectedRak] = useState('');
 	const [tahun_terbit, setTahun_terbit] = useState('');
+	const [tahunError, setTahunError] = useState('');
 	const navigateTo = useNavigate();
 
 	useEffect(() => {
@@ -64,7 +64,22 @@ const Bookcreate = () => {
 			});
 			navigateTo('/admin/book');
 		} catch (error) {
-			console.log(error);
+			if (error.response.data.errors) {
+				setJudulError('');
+				setKategoriError('');
+				setDeskripsiError('');
+				setStokError('');
+				setRakError('');
+				setTahunError('');
+				error.response.data.errors.map((e) => {
+					if (e.param === 'judul_buku') setJudulError(e.msg);
+					if (e.param === 'kategori_id') setKategoriError(e.msg);
+					if (e.param === 'deskripsi') setDeskripsiError(e.msg);
+					if (e.param === 'stok') setStokError(e.msg);
+					if (e.param === 'rak_id') setRakError(e.msg);
+					if (e.param === 'tahun_terbit') setTahunError(e.msg);
+				});
+			}
 		}
 	};
 
@@ -73,6 +88,7 @@ const Bookcreate = () => {
 			<form className="container" onSubmit={submit}>
 				<label>Judul Buku: </label>
 				<input type="text" value={judul_buku} onChange={(e) => setjudul_buku(e.target.value)} />
+				{judulError}
 				<label>Kategori</label>
 				{kategori_id.length > 0 ? (
 					<select onChange={(e) => setSelectedKategori(parseInt(e.target.value))}>
@@ -88,16 +104,19 @@ const Bookcreate = () => {
 						<option>Please Wait..</option>
 					</select>
 				)}
+				{kategoriError}
 				<label>Deskripsi</label>
 				<textarea type="text" value={deskripsi} onChange={(e) => setDeskripsi(e.target.value)} />
+				{deskripsiError}
 				<label>Gambar</label>
-				{preview ? <img src={preview} /> : ''}
+				{preview ? <img src={preview} alt="Upload gagal" /> : 'Gambar tidak boleh kosong'}
 				<label className="file-upload">
 					<input type="file" onChange={changeImage} />
 					Choose a file
 				</label>
 				<label>Stok</label>
 				<input type="text" value={stok} onChange={(e) => setStok(e.target.value)} />
+				{stokError}
 				<label>Rak</label>
 				{rak_id.length > 0 ? (
 					<select onChange={(e) => setSelectedRak(parseInt(e.target.value))}>
@@ -113,8 +132,10 @@ const Bookcreate = () => {
 						<option>Please Wait..</option>
 					</select>
 				)}
+				{rakError}
 				<label>Tahun Terbit</label>
 				<input type="text" value={tahun_terbit} onChange={(e) => setTahun_terbit(e.target.value)} />
+				{tahunError}
 				<button type="submit">Create</button>
 			</form>
 		</div>

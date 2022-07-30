@@ -13,7 +13,6 @@ const GetBookById = () => {
 	const [judul_buku, setjudul_buku] = useState('');
 	const [kategori_id, setKategori_id] = useState([]);
 	const [selectedKategori, setSelectedKategori] = useState('');
-
 	const [deskripsi, setDeskripsi] = useState('');
 	const [gambar, setGambar] = useState('');
 	const [preview, setPreview] = useState('');
@@ -21,10 +20,16 @@ const GetBookById = () => {
 	const [stok, setStok] = useState('');
 	const [rak_id, setRak_id] = useState([]);
 	const [selectedRak, setSelectedRak] = useState('');
-
 	const [tahun_terbit, setTahun_terbit] = useState('');
 	const { id } = useParams();
 	const navigateTo = useNavigate();
+
+	const [judulError, setJudulError] = useState('');
+	const [kategoriError, setKategoriError] = useState('');
+	const [deskripsiError, setDeskripsiError] = useState('');
+	const [stokError, setStokError] = useState('');
+	const [rakError, setRakError] = useState('');
+	const [tahunError, setTahunError] = useState('');
 
 	console.log(selectedKategori);
 
@@ -37,11 +42,9 @@ const GetBookById = () => {
 	const theBook = async () => {
 		const response = await axios.get(`http://localhost:5000/admin/book/${id}`);
 		setjudul_buku(response.data.judul_buku);
-
 		setSelectedKategori(response.data.kategori_id);
 		setDeskripsi(response.data.deskripsi);
 		setGambar(response.data.gambar.data);
-
 		setSelectedRak(response.data.rak_id);
 		setStok(response.data.stok);
 		setTahun_terbit(response.data.tahun_terbit);
@@ -85,7 +88,22 @@ const GetBookById = () => {
 			});
 			navigateTo('/admin/book');
 		} catch (error) {
-			console.log(error);
+			if (error.response.data.errors) {
+				setJudulError('');
+				setKategoriError('');
+				setDeskripsiError('');
+				setStokError('');
+				setRakError('');
+				setTahunError('');
+				error.response.data.errors.map((e) => {
+					if (e.param === 'judul_buku') setJudulError(e.msg);
+					if (e.param === 'kategori_id') setKategoriError(e.msg);
+					if (e.param === 'deskripsi') setDeskripsiError(e.msg);
+					if (e.param === 'stok') setStokError(e.msg);
+					if (e.param === 'rak_id') setRakError(e.msg);
+					if (e.param === 'tahun_terbit') setTahunError(e.msg);
+				});
+			}
 		}
 	};
 
@@ -94,6 +112,7 @@ const GetBookById = () => {
 			<form className="container" onSubmit={submit}>
 				<label>Judul Buku: </label>
 				<input type="text" value={judul_buku} onChange={(e) => setjudul_buku(e.target.value)} />
+				{judulError}
 				<label>Kategori</label>
 				{kategori_id.length > 0 ? (
 					<select onChange={(e) => setSelectedKategori(parseInt(e.target.value))}>
@@ -111,8 +130,10 @@ const GetBookById = () => {
 						<option>Please Wait..</option>
 					</select>
 				)}
+				{kategoriError}
 				<label>Deskripsi</label>
 				<textarea type="text" value={deskripsi} onChange={(e) => setDeskripsi(e.target.value)} />
+				{deskripsiError}
 				<label>Gambar</label>
 				{gambar ? <img src={`data:image/png;base64, ${toBase64(gambar)}`} alt={judul_buku} /> : ''}
 				{preview ? <img src={preview} /> : ''}
@@ -122,6 +143,7 @@ const GetBookById = () => {
 				</label>
 				<label>Stok</label>
 				<input type="text" value={stok} onChange={(e) => setStok(e.target.value)} />
+				{stokError}
 				<label>Rak</label>
 				{rak_id.length > 0 ? (
 					<select onChange={(e) => setSelectedRak(parseInt(e.target.value))}>
@@ -139,8 +161,10 @@ const GetBookById = () => {
 						<option>Please Wait..</option>
 					</select>
 				)}
+				{rakError}
 				<label>Tahun Terbit</label>
 				<input type="text" value={tahun_terbit} onChange={(e) => setTahun_terbit(e.target.value)} />
+				{tahunError}
 				<button type="submit">Update</button>
 			</form>
 		</div>
