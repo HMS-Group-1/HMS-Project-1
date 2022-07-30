@@ -22,7 +22,7 @@ const Login = () => {
 				})
 				.then((response) => {
 					const decoded = jwt_decode(response.data.accessToken);
-					if (decoded.role === 'admin') return navigateTo('/admin/user');
+					if (decoded.role === 'admin') return navigateTo('/admin/book');
 					if (decoded.role === 'anggota') return navigateTo('/book');
 				});
 		} catch (error) {

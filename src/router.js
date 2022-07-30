@@ -4,6 +4,8 @@ import Login from './pages/Login';
 import PinjamBuku from './pages/pinjambuku';
 import Register from './pages/Register';
 import Admintest from './test/Admintest';
+import Bookcreate from './test/bookcreate';
+import GetBookById from './test/bookdetail';
 import GetBook from './test/booktest';
 
 function Router() {
@@ -11,7 +13,8 @@ function Router() {
 		<Routes>
 			<Route path="/" element={<Login />} />
 			<Route path="/admin/book" element={<GetBook />} />
-			<Route path="/detail/:id" />
+			<Route path="/admin/book/detail/:id" element={<GetBookById />} />
+			<Route path="/admin/book/create" element={<Bookcreate />} />
 			<Route path="/admin/user" element={<Admintest />} />
 			<Route path="/register" element={<Register />} />
 			<Route path="/pinjambuku" element={<PinjamBuku />} />
