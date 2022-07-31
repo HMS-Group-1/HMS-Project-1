@@ -51,17 +51,12 @@ const ListBooks = () => {
 	const btnSearchHandler = async () => {
 		setLoading(true);
 		const input = document.getElementById('search').value;
-		const res = await axios.get('http://localhost:5000/token', {
-			withCredentials: true,
-		});
-		const tokenRef = res.data.accessToken;
 		const response = await axios.get('http://localhost:5000/book', {
 			params: {
 				page: 0,
 				limit: 12,
 				search_query: input,
 			},
-			headers: { Authorization: `Bearer ${tokenRef}` },
 		});
 		setBooks(response.data.hasilBuku);
 		setSearch((prevState) => ({
@@ -72,10 +67,6 @@ const ListBooks = () => {
 	};
 
 	const handleKeydown = async (e) => {
-		const res = await axios.get('http://localhost:5000/token', {
-			withCredentials: true,
-		});
-		const tokenRef = res.data.accessToken;
 		const input = document.getElementById('search').value;
 		if (e.key === 'Enter') {
 			setLoading(true);
@@ -85,7 +76,6 @@ const ListBooks = () => {
 					limit: 12,
 					search_query: input,
 				},
-				headers: { Authorization: `Bearer ${tokenRef}` },
 			});
 			setBooks(response.data.hasilBuku);
 			setSearch((prevState) => ({
