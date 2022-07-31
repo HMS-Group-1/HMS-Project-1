@@ -7,11 +7,11 @@ import axios from 'axios';
 
 function Navbar() {
 	const navigateTo = useNavigate();
-	const context = useContext(ContextProvider);
+	const { isLogin, setIsLogin } = useContext(ContextProvider);
 	const logOutHandler = async () => {
 		try {
 			await axios.delete('http://localhost:5000/logout');
-			context.setIsLogin(false);
+			setIsLogin({ ...isLogin, status: false });
 			navigateTo('/');
 		} catch (error) {
 			console.log(error);
@@ -22,7 +22,7 @@ function Navbar() {
 			<div className="w-1/2">
 				<img src={Logo} className="w-40" alt="" />
 			</div>
-			{!context.isLogin ? (
+			{!isLogin.status ? (
 				<div className="flex gap-2 justify-end w-1/2">
 					<Link to="/Masuk">
 						<button className="bg-merahTua text-white px-2 py-1 rounded-md">Masuk</button>
@@ -33,6 +33,7 @@ function Navbar() {
 				</div>
 			) : (
 				<div className="flex gap-2 justify-end w-1/2">
+					Halo, {isLogin.nama}
 					<Link to="/">
 						<button onClick={logOutHandler} className="bg-biru text-white px-3 py-2 rounded-md">
 							Logout

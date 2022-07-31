@@ -5,9 +5,8 @@ import jwt_decode from 'jwt-decode';
 import logo from '../assets/logobukabuku.png';
 import { ContextProvider } from '../helpers/context';
 
-
 const Login = () => {
-    const context = useContext(ContextProvider);
+	const { setIsLogin } = useContext(ContextProvider);
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [message, setMessage] = useState('');
@@ -25,7 +24,7 @@ const Login = () => {
 				})
 				.then((response) => {
 					const decoded = jwt_decode(response.data.accessToken);
-					// context.setToken(response.data.accessToken);
+					setIsLogin({ nama: decoded.nama, id: decoded.userId, status: true });
 					if (decoded.role === 'admin') return navigateTo('/admin/user');
 					if (decoded.role === 'anggota') return context.setIsLogin(true) || navigateTo('/book');
 				});
