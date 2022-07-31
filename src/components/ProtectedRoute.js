@@ -3,9 +3,8 @@ import { Navigate } from 'react-router-dom';
 import { ContextProvider } from '../helpers/context';
 
 const ProtectedRoute = ({ children }) => {
-	const context = useContext(ContextProvider);
-	const isLogin = context.isLogin;
-	if (isLogin === false) {
+	const { isLogin } = useContext(ContextProvider);
+	if (isLogin.status === false) {
 		return <Navigate to={'/'} />;
 	} else {
 		return children;
