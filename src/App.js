@@ -1,16 +1,19 @@
 import './App.css';
 import Footer from './components/Footer';
 import Router from './router';
+import { ContextWrapper } from './helpers/context';
 
 function App() {
-  return (
-    <div className="App">
-      <Router/>
-      <br/>
-      <br/>
-      <Footer/>
-    </div>
-  );
+	return (
+		<ContextWrapper>
+			<div className="App h-full">
+				<Router />
+				<br />
+				<br />
+				<Footer />
+			</div>
+		</ContextWrapper>
+	);
 }
 
 export default App;

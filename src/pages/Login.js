@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import logo from '../assets/logobukabuku.png';
+import { ContextProvider } from '../helpers/context';
 
 const Login = () => {
+	const context = useContext(ContextProvider);
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [message, setMessage] = useState('');
@@ -61,11 +63,11 @@ const Login = () => {
 				<h5 className="w-11/12 pt-0 pb-3 tablet:w-full tablet:pl-3 tablet:pt-1 tablet:text-base mobile:w-full mobile:text-sm mobile:px-3">Masuk dengan akunmu dulu ya!</h5>
 				<form onSubmit={Auth} className="flex flex-col w-full mobile:px-3">
 					<p className="text-center text-merahTua font-bold text-lg desktop:mb-2 tablet:my-2 mobile:my-2">{message}</p>
-					<label className="pb-2" for="email">
+					<label className="pb-2" htmlFor="email">
 						Email
 					</label>
 					<input
-						class="appearance-none border rounded w-full py-2 px-3 mb-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+						className="appearance-none border rounded w-full py-2 px-3 mb-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
 						id="email"
 						type="text"
 						placeholder="@email"
@@ -73,11 +75,11 @@ const Login = () => {
 						onChange={(e) => setEmail(e.target.value)}
 					/>
 					<p className="text-merahTua font-bold text-lg pb-2 mb-1">{emailErrorMessage}</p>
-					<label className="pb-2" for="password">
+					<label className="pb-2" htmlFor="password">
 						Password
 					</label>
 					<input
-						class=" appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline "
+						className=" appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline "
 						id="password"
 						type="password"
 						placeholder="******************"
@@ -85,11 +87,11 @@ const Login = () => {
 						onChange={(e) => setPassword(e.target.value)}
 					/>
 					<p className="text-merahTua font-bold text-lg tablet:my-1 mobile:my-1">{passwordErrorMessage}</p>
-					<div class="items-center justify-between pt-4 tablet:flex tablet:flex-col mobile:flex mobile:flex-col">
-						<button class="bg-yellow-200 text-black w-full font-bold py-2 px-4 rounded-md mb-3 focus:outline-none focus:shadow-outline tablet:pt-3" type="submit">
+					<div className="items-center justify-between pt-4 tablet:flex tablet:flex-col mobile:flex mobile:flex-col">
+						<button className="bg-yellow-200 text-black w-full font-bold py-2 px-4 rounded-md mb-3 focus:outline-none focus:shadow-outline tablet:pt-3" type="submit">
 							masuk
 						</button>
-						<p class="inline-block align-baseline font-semibold text-sm text-blue-500 tablet:pt-2 ">
+						<p className="inline-block align-baseline font-semibold text-sm text-blue-500 tablet:pt-2 ">
 							Belum punya akun?{' '}
 							<Link className="hover:underline" to={'register'}>
 								Daftar Sekarang!
