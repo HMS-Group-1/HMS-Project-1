@@ -26,7 +26,7 @@ const Login = () => {
 					const decoded = jwt_decode(response.data.accessToken);
 					setIsLogin({ nama: decoded.nama, id: decoded.userId, status: true });
 					if (decoded.role === 'admin') return navigateTo('/admin/user');
-					if (decoded.role === 'anggota') return context.setIsLogin(true) || navigateTo('/book');
+					if (decoded.role === 'anggota') return navigateTo('/book');
 				});
 		} catch (error) {
 			if (error.response) {
