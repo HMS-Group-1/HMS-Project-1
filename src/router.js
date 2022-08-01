@@ -1,21 +1,22 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import BukuAdmin from './pages/daftarbukuadmin';
-import DetailBuku from './pages/detailBuku';
 import EditUser from './pages/EditUser';
+import ListBooks from './pages/ListBooks';
 import Login from './pages/Login';
 
 import PinjamBuku from './pages/pinjambuku';
 import Register from './pages/Register';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function Router() {
 	return (
 		<Routes>
 			<Route path="/" element={<Login />} />
 			<Route path="/register" element={<Register />} />
-			<Route path="/edit" element={<PinjamBuku />} />
-			<Route path="/detail" element={<DetailBuku />} />
-			<Route path="/admin/daftarbuku" element={<BukuAdmin />} />
+			<Route path="/book" element={<ProtectedRoute><ListBooks /></ProtectedRoute>} />
+			<Route path="/detail" element={<ProtectedRoute><ListBooks /></ProtectedRoute>} />
+			<Route path="/pinjambuku" element={<PinjamBuku />} />
+			<Route path="/kembalikanbuku" element={<PinjamBuku />} />
 			<Route path="/daftaruser" element={<PinjamBuku />} />
 			<Route path="/EditUser" element={<EditUser />} />
 		</Routes>
