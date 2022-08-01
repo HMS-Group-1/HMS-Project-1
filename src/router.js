@@ -1,5 +1,8 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import BukuAdmin from './pages/daftarbukuadmin';
+import DetailBuku from './pages/detailBuku';
+import EditUser from './pages/EditUser';
 import Login from './pages/Login';
 
 import PinjamBuku from './pages/pinjambuku';
@@ -10,9 +13,11 @@ function Router() {
 		<Routes>
 			<Route path="/" element={<Login />} />
 			<Route path="/register" element={<Register />} />
-			<Route path="/pinjambuku" element={<PinjamBuku />} />
-			<Route path="/kembalikanbuku" element={<PinjamBuku />} />
+			<Route path="/edit" element={<PinjamBuku />} />
+			<Route path="/detail" element={<DetailBuku />} />
+			<Route path="/admin/daftarbuku" element={<BukuAdmin />} />
 			<Route path="/daftaruser" element={<PinjamBuku />} />
+			<Route path="/EditUser" element={<EditUser />} />
 		</Routes>
 	);
 }
