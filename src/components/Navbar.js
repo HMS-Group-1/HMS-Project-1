@@ -7,7 +7,7 @@ import axios from 'axios';
 
 function Navbar() {
 	const navigateTo = useNavigate();
-	const { isLogin, setIsLogin } = useContext(ContextProvider);
+	const { isLogin } = useContext(ContextProvider);
 	const logOutHandler = async () => {
 		try {
 			await axios.delete('http://localhost:5000/logout');
