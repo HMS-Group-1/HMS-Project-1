@@ -12,7 +12,7 @@ function Navbar() {
 	const logOutHandler = async () => {
 		try {
 			await axios.delete('http://localhost:5000/logout');
-			setIsLogin({ ...isLogin, status: false });
+			localStorage.removeItem('isLogin');
 			navigateTo('/');
 		} catch (error) {
 			console.log(error);
