@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import PinjamBuku from './pages/pinjambuku';
 import Register from './pages/Register';
 import ProtectedRoute from './components/ProtectedRoute';
+import DetailBuku from './pages/detailBuku';
 
 function Router() {
 	return (
@@ -14,10 +15,9 @@ function Router() {
 			<Route path="/" element={<Login />} />
 			<Route path="/register" element={<Register />} />
 			<Route path="/book" element={<ProtectedRoute><ListBooks /></ProtectedRoute>} />
-			<Route path="/detail" element={<ProtectedRoute><ListBooks /></ProtectedRoute>} />
-			<Route path="/pinjambuku" element={<PinjamBuku />} />
-			<Route path="/kembalikanbuku" element={<PinjamBuku />} />
-			<Route path="/daftaruser" element={<PinjamBuku />} />
+			<Route path="/book/detail/:id" element={<ProtectedRoute><DetailBuku /></ProtectedRoute>} />
+			{/* <Route path="/pinjambuku" element={<PinjamBuku />} />
+			<Route path="/kembalikanbuku" element={<PinjamBuku />} /> */}
 			<Route path="/EditUser" element={<EditUser />} />
 		</Routes>
 	);

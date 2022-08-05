@@ -1,10 +1,11 @@
 import axios from "../helpers/interceptor.js"
-import { React, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { React, useCallback, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Logo from '../assets/capture1.PNG';
 import "../styles/KembalikanBuku.css"
 
 const DetailBuku = () => {
+    const params = useParams();
     const [books, setBookShow] = useState([]);
     const [kategori, setKategori] = useState('')
     const [loading, setLoading] = useState(false)
@@ -12,18 +13,13 @@ const DetailBuku = () => {
 
     useEffect(() => {
         getKategoris();
-    }, []);
-    // const getBook = async () => {
-    //     const { data: res } = await axios.get(`http://localhost:5000/book/${1}`);
-    //     setBookShow(res);
-    //     setTimeout(setLoading(true), 2000)
-    // }
-    const getKategoris = async () => {
-        const { data: res } = await axios.get(`http://localhost:5000/kategori/book/${1}`);
+    });
+    const getKategoris =  useCallback ( async ()=> {
+        const { data: res } = await axios.get(`http://localhost:5000/kategori/book/${params.id}`);
         setBookShow(res)
         setTimeout(setLoading(true), 2000)
-        console.log(books.Kategori_id.kategori_nama)
-    }
+    },[params.id])
+
     const onBinaryMessage = (img) => {
         return btoa(
             img.reduce((data, byte) => data + String.fromCharCode(byte), '')
@@ -33,7 +29,7 @@ const DetailBuku = () => {
     const navigate = useNavigate();
 
     function kembali() {
-        navigate("../")
+        navigate("/book")
     }
 
     return (

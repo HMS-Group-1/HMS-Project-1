@@ -17,6 +17,10 @@ function Navbar() {
 			console.log(error);
 		}
 	};
+	const EditUserHandler = async () =>{
+		navigateTo('/EditUser')
+	}
+
 	return (
 		<div className="flex mb-4  tablet:justify-between w-full tablet:mb-4 tablet:mt-2 desktop:z-20">
 			<div className="w-1/2">
@@ -34,8 +38,11 @@ function Navbar() {
 			) : (
 				<div className="flex gap-2 justify-end w-1/2">
 					Halo, {isLogin.nama}
+					<button onClick={EditUserHandler} className="bg-biru text-white px-3 py-2 rounded-md">
+							Edit User
+						</button>
 					<Link to="/">
-						<button onClick={logOutHandler} className="bg-biru text-white px-3 py-2 rounded-md">
+						<button onClick={logOutHandler} className="bg-merahTua text-white px-3 py-2 rounded-md">
 							Logout
 						</button>
 					</Link>

@@ -17,8 +17,8 @@ const responseHandler = (response) => {
 };
 
 const errorHandler = (error) => {
-	window.location.href = '/';
-	localStorage.removeItem('isLogin');
+	// window.location.href = '/';
+	// localStorage.removeItem('isLogin');
 
 	return Promise.reject(error);
 };
