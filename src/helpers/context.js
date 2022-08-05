@@ -6,7 +6,7 @@ export const ContextProvider = React.createContext(null);
 export const ContextWrapper = (props) => {
 	const [isLogin, setIsLogin] = useLocalStorage('isLogin', {
 		nama: '',
-		id: 0,
+		id: null,
 		status: false,
 	});
 
