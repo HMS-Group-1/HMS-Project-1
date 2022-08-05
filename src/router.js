@@ -3,11 +3,13 @@ import { Route, Routes } from 'react-router-dom';
 import EditUser from './pages/EditUser';
 import ListBooks from './pages/ListBooks';
 import Login from './pages/Login';
-
 import PinjamBuku from './pages/pinjambuku';
+import KembalikanBuku from './pages/kembalikanbuku';
 import Register from './pages/Register';
 import ProtectedRoute from './components/ProtectedRoute';
 import DetailBuku from './pages/detailBuku';
+
+import HistoryPeminjaman from './pages/HistoryPeminjaman';
 
 function Router() {
 	return (
@@ -19,6 +21,47 @@ function Router() {
 			{/* <Route path="/pinjambuku" element={<PinjamBuku />} />
 			<Route path="/kembalikanbuku" element={<PinjamBuku />} /> */}
 			<Route path="/EditUser" element={<EditUser />} />
+			<Route
+				path="/book"
+				element={
+					<ProtectedRoute>
+						<ListBooks />
+					</ProtectedRoute>
+				}
+			/>
+			<Route
+				path="/detail"
+				element={
+					<ProtectedRoute>
+						<ListBooks />
+					</ProtectedRoute>
+				}
+			/>
+			<Route
+				path="/pinjambuku"
+				element={
+					<ProtectedRoute>
+						<PinjamBuku />
+					</ProtectedRoute>
+				}
+			/>
+			<Route
+				path="/kembalikanbuku"
+				element={
+					<ProtectedRoute>
+						<KembalikanBuku />
+					</ProtectedRoute>
+				}
+			/>
+			<Route
+				path="/history_peminjaman"
+				element={
+					<ProtectedRoute>
+						<HistoryPeminjaman />
+					</ProtectedRoute>
+				}
+			/>
+			<Route path="/daftaruser" element={<PinjamBuku />} />
 		</Routes>
 	);
 }
