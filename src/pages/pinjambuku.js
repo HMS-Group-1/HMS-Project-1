@@ -1,25 +1,11 @@
 import React from "react";
-import Logo from '../assets/capture1.PNG';
-import Form from "../components/form";
-import NavBar2 from "../components/NavigationInside";
+import Navbar from "../components/Navbar";
+import TablePinjam from "../components/TablePinjam";
 const PinjamBuku = () => {
     return(
-        <div class = "container-fluid">
-            <div class = "row mx-3 my-5">
-                <div class = "col-md-4">
-                    <div class = 'bg-secondary'>
-                    <img src={Logo} alt=''></img>
-                    </div>
-                </div>
-            </div>
-            <div class="my-5">
-            <NavBar2/>
-            </div>
-            <div class="row">
-                <div class ="col-12">
-                    <Form/>
-                </div>
-            </div>
+        <div className='flex-col h-screen relative m-4 tablet:w-[90%] desktop:max-w-[1024px] tablet:m-auto tablet:mb-4'>
+            <Navbar/>
+            <TablePinjam/>
         </div>
     )
 

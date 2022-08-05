@@ -13,17 +13,11 @@ import searchIllustration from '../assets/searching-data.svg';
 const ListBooks = () => {
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [kategori, setKategori] = useState([]);
     const [search, setSearch] = useState({
         page: 0,
         maxPage: 1,
         search_query: ""
     });
-
-    const getKategori = async () => {
-        const response =  await axios.get('http://localhost:5000/kategori/');
-        setKategori(response.data)
-    };
 
     const getBooks = async () => {
         const res = await axios.get('http://localhost:5000/token',{
@@ -33,7 +27,7 @@ const ListBooks = () => {
         const response = await axios.get('http://localhost:5000/book', {
             params: {
                 page: search.page,
-                limit: 12,
+                limit: 15,
                 search_query: search.search_query
             },
             headers: { 'Authorization': `Bearer ${tokenRef}` }
@@ -105,9 +99,7 @@ const ListBooks = () => {
 
     useEffect(() => {
         setLoading(true);
-        getKategori();
         getBooks();
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [search.page]);
 
@@ -134,7 +126,7 @@ const ListBooks = () => {
                             <div className="h-[290px] w-[160px] desktop:w-[180px] rounded-md shadow-md bg-slate-400/10 justify-center mb-4 shrink">
                                 <div className="h-[180px] relative w-full object-cover rounded-br-lg rounded-bl-lg">
                                     <img src={`data:image/png;base64, ${toBase64(book.gambar.data)}`} alt={book.judul_buku} className='h-full w-full object-cover rounded-br-lg rounded-bl-lg' />
-                                    <p className='z-10 absolute top-0 right-0 text-white text-sm mt-2 bg-biru w-fit px-2 py-1 m-0 rounded-tl-xl rounded-bl-xl'>{toTitleCase(kategori[book.kategori_id-1].kategori_nama)}</p>
+                                    <p className='z-10 absolute top-0 right-0 text-white text-sm mt-2 bg-biru w-fit px-2 py-1 m-0 rounded-tl-xl rounded-bl-xl'>{toTitleCase(book.Kategori_id.kategori_nama)}</p>
                                 </div>
                                 <div className="flex flex-col m-2">
                                     <p className='text-sm text-slate-900 font-medium'>{truncateString(book.judul_buku, 33)}</p>
