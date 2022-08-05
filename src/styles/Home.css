@@ -1,16 +1,7 @@
-<<<<<<< HEAD
 img {
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-=======
-img {
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
->>>>>>> bf61aabcddd8a645ab36c3c2b2c4c9124f2b0de5
+	width: 100%;
+	height: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
