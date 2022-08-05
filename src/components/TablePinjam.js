@@ -114,7 +114,7 @@ const TablePinjam = () => {
                     headers: { 'Authorization': `Bearer ${tokenRef}` }
                 }
             );
-            // getBooks();
+            getBooks();
             toast.success("Buku berhasil dipinjam");
         } catch (error) {
             toast.error(`Opps sepertinya buku telah dipinjam`)
