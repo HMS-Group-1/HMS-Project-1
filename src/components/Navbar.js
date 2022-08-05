@@ -10,9 +10,11 @@ function Navbar() {
 	const navigateTo = useNavigate();
 	const { isLogin } = useContext(ContextProvider);
 	const [menu, setMenu] = useState(false);
+
 	const menuHandler = () => {
 		setMenu(!menu);
 	};
+
 	const logOutHandler = async () => {
 		try {
 			await axios.delete('http://localhost:5000/logout');
@@ -40,7 +42,7 @@ function Navbar() {
 				<div className="flex gap-2 justify-end w-1/2">
 					<div className="w-10 h-10 bg-yellow-300 rounded-full">
 						<p onClick={menuHandler} className="w-full h-full relative hover:cursor-pointer flex justify-center items-center text-lg text-white font-medium">
-							{getInitials(context.name)}
+							{getInitials(isLogin.nama)}
 						</p>
 						{menu && (
 							<div className="bg-blue-400 z-20 mt-1 rounded-md w-[180px] py-2 absolute right-0 top-11">
