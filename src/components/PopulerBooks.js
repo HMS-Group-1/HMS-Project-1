@@ -17,7 +17,6 @@ const PopulerBooks = () => {
     const slideLeft = () => {
         let slider = document.getElementById('sliderPopularBooks')
         slider.scrollLeft = slider.scrollLeft - 500
-        console.log('clicked')
     }
 
     const slideRight = () => {
@@ -25,7 +24,7 @@ const PopulerBooks = () => {
         slider.scrollLeft = slider.scrollLeft + 500
     }
     return (
-        <div className='my-20' data-aos="fade-up" data-aos-mirror="true" data-aos-offset="80">
+        <div className='my-20' data-aos="fade-up"  data-aos-offset="200">
             <div className='flex items-center justify-between mb-4'>
                 <p className='text-slate-800 font-semibold text-2xl tablet:text-3xl w-1/2 tablet:w-full'>Popular Books</p>
                 <Link to='/register' className=' w-1/2 tablet:w-full justify-end flex'>

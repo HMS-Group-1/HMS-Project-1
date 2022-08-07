@@ -28,7 +28,6 @@ const ListBooks = () => {
 			},
 		});
 		setBooks(response.data.hasilBuku);
-		console.log(response.data);
 		setSearch((prevState) => ({
 			...prevState,
 			maxPage: response.data.jumlahHalaman,

@@ -20,7 +20,7 @@ const Testimonial = () => {
         slider.scrollLeft = slider.scrollLeft + 400
     }
     return (
-        <div className=' relative mt-20 px-2' data-aos="fade-up" data-aos-mirror="true" data-aos-offset="80">
+        <div className=' relative mt-20 px-2' data-aos="fade-up"  data-aos-offset="200">
             <div className='flex items-center tablet:flex-row px-4 rounded-md tablet:px-0 py-4 tablet:py-0 flex-col justify-between w-full bg-yellow-400/10'>
                 <div className='tablet:m-8'>
                     <p className='font-semibold text-2xl tablet:text-3xl text-slate-700 tablet:mb-2 text-center tablet:text-left'>Our Testimonial</p>

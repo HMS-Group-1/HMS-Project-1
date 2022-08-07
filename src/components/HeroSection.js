@@ -11,7 +11,7 @@ const HeroSection = () => {
         });
     }, []);
     return (
-        <div className='flex flex-col tablet:flex-row tablet:mt-12'  data-aos="fade-up" data-aos-mirror="true" data-aos-offset="80">
+        <div className='flex flex-col tablet:flex-row tablet:mt-12'  data-aos="fade-up"  data-aos-offset="200">
             <div className='tablet:w-1/2 item-center content-center  justify-center flex-col'>
                 <p className='text-4xl text-slate-800 font-bold mb:8 tablet:mb-8'>THE LIBRARY THAT'S <span className='text-blue-600'>ALWAYS OPEN.</span></p>
                 <p className='text-lg text-slate-700 font-medium'>Find your books : explore over 500.000 textbook and non-fiction
