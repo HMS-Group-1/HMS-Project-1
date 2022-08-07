@@ -32,4 +32,12 @@ function getInitials(string) {
     return initials;
 };
 
-export { truncateString, toBase64, toTitleCase, getInitials };
+const diffInDays = (datePinjam) =>{
+    const today = new Date();
+    const pinjamDate = new Date(datePinjam);
+    const diffDate = today - pinjamDate
+    const res = Math.floor(diffDate / (1000 * 60 * 60 * 24));
+    return res
+}
+
+export { truncateString, toBase64, toTitleCase, getInitials, diffInDays };

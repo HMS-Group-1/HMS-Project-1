@@ -7,11 +7,13 @@ import KembalikanBuku from './pages/kembalikanbuku';
 import Register from './pages/Register';
 import ProtectedRoute from './components/ProtectedRoute';
 import HistoryPeminjaman from './pages/HistoryPeminjaman';
+import Home from './pages/Home';
 
 function Router() {
 	return (
 		<Routes>
-			<Route path="/" element={<Login />} />
+			<Route path="/" element={<Home />} />
+			<Route path="/login" element={<Login />} />
 			<Route path="/register" element={<Register />} />
 			<Route
 				path="/book"

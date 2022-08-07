@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import SketelonTable from './SketelonTable';
 import { toTitleCase } from '../helpers/constant';
 import { Pagination, Stack } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const TablePinjam = () => {
 	const context = useContext(ContextProvider);
@@ -119,8 +120,6 @@ const TablePinjam = () => {
 			toast.success('Buku berhasil dipinjam');
 		} catch (error) {
 			toast.error(`Opps sepertinya buku telah dipinjam`);
-			console.log(error.response.status);
-			console.log(error.response.statusText);
 		}
 	};
 
@@ -131,7 +130,7 @@ const TablePinjam = () => {
 	}, [search.page]);
 
 	return (
-		<div className="w-full">
+		<div className="w-full h-full">
 			<ToastContainer />
 			<div className="my-2 flex mb-4 desktop:mb-8 desktop:w-1/4">
 				<input type="text" id="search" className="py-2 px-4 w-full shadow appearance-none border rounded leading-tight focus:outline-none focus:shadow-outline" onKeyDown={handleKeydown} placeholder="Cari buku" />
@@ -171,8 +170,10 @@ const TablePinjam = () => {
 										<th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 											{number++}
 										</th>
-										<td className="py-4 px-6">{book.judul_buku}</td>
-										<td className="py-4 px-6">{toTitleCase(book.Kategori_id.kategori_nama)}</td>
+										<Link to={`detail/${book.id}`}>
+											<td className="py-4 px-6">{book.judul_buku}</td>
+										</Link>
+										<td className="py-4 px-6 hover:text-slate-900">{toTitleCase(book.Kategori_id.kategori_nama)}</td>
 										<td className="py-4 px-6">{book.stok}</td>
 										<td className="py-4 px-6 hover:cursor-pointer">
 											<p onClick={() => pinjamHandler(book.id)} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
@@ -183,11 +184,11 @@ const TablePinjam = () => {
 								))}
 					</tbody>
 				</table>
-				<div className="flex justify-center my-4">
-					<Stack spacing={2}>
-						<Pagination count={search.maxPage} color="primary" onChange={pageNumberHandler} />
-					</Stack>
-				</div>
+			</div>
+			<div className="flex justify-center my-4">
+				<Stack spacing={2}>
+					<Pagination count={search.maxPage} color="primary" onChange={pageNumberHandler} />
+				</Stack>
 			</div>
 		</div>
 	);
