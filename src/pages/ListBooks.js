@@ -89,7 +89,7 @@ const ListBooks = () => {
 
 	return (
 		<div className="bg-white h-full">
-			<div className="flex-col relative m-4 tablet:w-[90%] desktop:max-w-[1024px] tablet:m-auto tablet:mb-4 h-[100%]">
+			<div className="flex-col relative m-4 tablet:w-[90%] desktop:max-w-[80%] laptop:-w-[90%] tablet:m-auto tablet:mb-4 h-[100%]">
 				<div className="desktop:sticky desktop:top-0 desktop:z-20 desktop:pb-1 bg-white rounded-b-lg">
 					<Navbar />
 					<div className="my-2 flex mb-4 desktop:mb-8">
