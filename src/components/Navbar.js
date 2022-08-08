@@ -44,7 +44,6 @@ function Navbar() {
 				</div>
 			) : (
 				<div className="flex gap-2 justify-end w-1/2">
-					Halo, {isLogin.nama}
 					<Link to="/">
 						<button onClick={logOutHandler} className="bg-merahTua text-white px-3 py-2 rounded-md">
 							Logout
