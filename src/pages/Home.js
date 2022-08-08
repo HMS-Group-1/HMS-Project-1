@@ -1,15 +1,23 @@
 
 import React from 'react';
-import Logo2 from '../assets/capture3.jpg';
 import Navbar from '../components/Navbar';
 import '../styles/Home.css';
+import HeroSection from '../components/HeroSection';
+import Partner from '../components/Partner';
+import Testimonial from '../components/Testimonial';
+import PopulerBooks from '../components/PopulerBooks';
+import Footer  from '../components/Footer';
 
 function Home() {
 	return (
-		<div className="home">
-			<Navbar />
-			<div className="headerContainer">
-				<img src={Logo2} alt="" />
+		<div className='bg-white w-full'>
+			<div className='flex-col h-screen relative w-5/6 m-auto tablet:w-full desktop:max-w-[1024px] tablet:m-auto tablet:mb-4'>
+				<Navbar />
+				<HeroSection/>
+				<PopulerBooks/>
+				<Partner/>
+				<Testimonial/>
+				<Footer/>
 			</div>
 		</div>
 	);

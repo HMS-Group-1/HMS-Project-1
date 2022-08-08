@@ -4,7 +4,7 @@ import { ContextProvider } from '../helpers/context';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Pagination, Stack } from '@mui/material';
-import { toTitleCase } from '../helpers/constant';
+import { toTitleCase, diffInDays } from '../helpers/constant';
 import SketelonTable from './SketelonTable';
 
 const TablePengembalian = () => {
@@ -79,54 +79,6 @@ const TablePengembalian = () => {
 		setLoading(false);
 	};
 
-	// const btnSearchHandler = async () => {
-	//     setLoading(true);
-	//     const input = document.getElementById('search').value;
-	//     const res = await axios.get('http://localhost:5000/token', {
-	//         withCredentials: true
-	//     });
-	//     const tokenRef = res.data.accessToken;
-	//     const response = await axios.get('http://localhost:5000/book', {
-	//         params: {
-	//             page: 0,
-	//             limit: 12,
-	//             search_query: input
-	//         },
-	//         headers: { 'Authorization': `Bearer ${tokenRef}` }
-	//     });
-	//     setBooks(response.data.hasilBuku);
-	//     setSearch(prevState => ({
-	//         ...prevState,
-	//         maxPage: response.data.jumlahHalaman
-	//     }));
-	//     setLoading(false);
-	// }
-
-	// const handleKeydown = async (e) => {
-	//     const res = await axios.get('http://localhost:5000/token', {
-	//         withCredentials: true
-	//     });
-	//     const tokenRef = res.data.accessToken;
-	//     const input = document.getElementById('search').value;
-	//     if (e.key === 'Enter') {
-	//         setLoading(true);
-	//         const response = await axios.get('http://localhost:5000/book', {
-	//             params: {
-	//                 page: 0,
-	//                 limit: 12,
-	//                 search_query: input
-	//             },
-	//             headers: { 'Authorization': `Bearer ${tokenRef}` }
-	//         });
-	//         setBooks(response.data.hasilBuku);
-	//         setSearch(prevState => ({
-	//             ...prevState,
-	//             maxPage: response.data.jumlahHalaman
-	//         }));
-	//         setLoading(false);
-	//     }
-	// }
-
 	useEffect(() => {
 		setLoading(true);
 		getListPinjam();
@@ -155,7 +107,7 @@ const TablePengembalian = () => {
 								Rak
 							</th>
 							<th scope="col" className="py-3 px-6">
-								Status
+								Durasi Peminjaman
 							</th>
 							<th scope="col" className="py-3 px-6">
 								Action
@@ -175,7 +127,7 @@ const TablePengembalian = () => {
 								<td className="py-4 px-6">{toTitleCase(book.tbl_buku.Rak_id.lokasi_rak)}</td>
 								<td className="py-4 px-6">
 									{book.isPinjam === true ? (
-										<p className="text-yellow-600 text-sm text-center font-medium bg-yellow-500/20 py-1 px-2 rounded-md">Dipinjam</p>
+										<p className="text-yellow-600 text-sm text-center font-medium bg-yellow-500/20 py-1 px-2 rounded-md">{diffInDays(book.tanggalPinjam) === 0 ? 1 : diffInDays(book.tanggalPinjam) } Hari</p>
 									) : (
 										<p className="text-green-600 text-sm text-center font-medium bg-green-600/20 py-1 px-2 rounded-md">Dikembalikan</p>
 									)}

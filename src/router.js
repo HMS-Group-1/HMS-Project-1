@@ -10,11 +10,13 @@ import ProtectedRoute from './components/ProtectedRoute';
 import DetailBuku from './pages/detailBuku';
 
 import HistoryPeminjaman from './pages/HistoryPeminjaman';
+import Home from './pages/Home';
 
 function Router() {
 	return (
 		<Routes>
-			<Route path="/" element={<Login />} />
+			<Route path="/" element={<Home />} />
+			<Route path="/login" element={<Login />} />
 			<Route path="/register" element={<Register />} />
 			<Route path="/book" element={<ProtectedRoute><ListBooks /></ProtectedRoute>} />
 			<Route path="/book/detail/:id" element={<ProtectedRoute><DetailBuku /></ProtectedRoute>} />

@@ -8,6 +8,7 @@ import SketelonBooks from '../components/SketelonBooks';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import searchIllustration from '../assets/searching-data.svg';
+import Footer from '../components/Footer';
 
 const ListBooks = () => {
 	const [books, setBooks] = useState([]);
@@ -22,12 +23,11 @@ const ListBooks = () => {
 		const response = await axios.get('http://localhost:5000/book', {
 			params: {
 				page: search.page,
-				limit: 12,
+				limit: 15,
 				search_query: search.search_query,
 			},
 		});
 		setBooks(response.data.hasilBuku);
-		console.log(response.data);
 		setSearch((prevState) => ({
 			...prevState,
 			maxPage: response.data.jumlahHalaman,
@@ -49,7 +49,7 @@ const ListBooks = () => {
 		const response = await axios.get('http://localhost:5000/book', {
 			params: {
 				page: 0,
-				limit: 12,
+				limit: 15,
 				search_query: input,
 			},
 		});
@@ -68,7 +68,7 @@ const ListBooks = () => {
 			const response = await axios.get('http://localhost:5000/book', {
 				params: {
 					page: 0,
-					limit: 12,
+					limit: 15,
 					search_query: input,
 				},
 			});
@@ -135,6 +135,7 @@ const ListBooks = () => {
 						</Stack>
 					</div>
 				)}
+			<Footer/>
 			</div>
 		</div>
 	);

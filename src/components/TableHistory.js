@@ -53,15 +53,79 @@ const TableHistory = () => {
         }));
     };
 
+    const btnSearchHandler = async () => {
+        setLoading(true);
+        const input = document.getElementById('search').value;
+        const res = await axios.get('http://localhost:5000/token', {
+            withCredentials: true,
+        });
+        const tokenRef = res.data.accessToken;
+        const response = await axios.get('http://localhost:5000/listKembali', {
+            params: {
+                userId: context.userId,
+                page: search.page,
+                limit: 10,
+                search_query: input,
+                kategori: '',
+                rak: '',
+                isKembali: true,
+            },
+            headers: { 'Authorization': `Bearer ${tokenRef}` }
+        });
+        setListKembali(response.data.hasilBuku)
+        setTableNumber(response.data.halamanKe)
+        setSearch(prevState => ({
+            ...prevState,
+            maxPage: response.data.jumlahHalaman
+        }));
+        setLoading(false);
+    };
+
+    const handleKeydown = async (e) => {
+        const res = await axios.get('http://localhost:5000/token', {
+            withCredentials: true,
+        });
+        const tokenRef = res.data.accessToken;
+        const input = document.getElementById('search').value;
+        if (e.key === 'Enter') {
+            setLoading(true);
+            const response = await axios.get('http://localhost:5000/listKembali', {
+                params: {
+                    userId: context.userId,
+                    page: search.page,
+                    limit: 10,
+                    search_query: input,
+                    kategori: '',
+                    rak: '',
+                    isKembali: true,
+                },
+                headers: { 'Authorization': `Bearer ${tokenRef}` }
+            });
+            setListKembali(response.data.hasilBuku)
+            setSearch((prevState) => ({
+                ...prevState,
+                maxPage: response.data.jumlahHalaman,
+            }));
+            setLoading(false);
+        }
+    };
+
     useEffect(() => {
         setLoading(true);
         getListPinjam();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [search.page]);
+    }, [search.page, search.search_query]);
 
 
     return (
         <div>
+            <div className="my-2 flex mb-4 desktop:mb-8 desktop:w-1/4">
+                <input type="text" id="search" className="py-2 px-4 w-full shadow appearance-none border rounded leading-tight focus:outline-none focus:shadow-outline" onKeyDown={handleKeydown} placeholder="Cari buku" />
+                <button onClick={btnSearchHandler} className="px-4 rounded-md bg-unguTua text-white ml-2">
+                    Cari
+                </button>
+            </div>
+
             <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead className="text-xs text-gray-700 uppercase bg-blue-300 dark:bg-gray-700 dark:text-gray-400">
@@ -121,7 +185,7 @@ const TableHistory = () => {
                     </tbody>
                 </table>
                 {listKembali.length === 0 &&
-                    <div className='flex my-2'>
+                    <div className='flex my-2 ml-2'>
                         <p className='m-auto '>Kamu belum pernah meminjam ataupun mengembalikan buku</p>
                     </div>}
                 <div className='flex justify-center my-4'>
