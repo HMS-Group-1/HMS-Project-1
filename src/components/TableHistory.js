@@ -188,12 +188,12 @@ const TableHistory = () => {
                     <div className='flex my-2 ml-2'>
                         <p className='m-auto '>Kamu belum pernah meminjam ataupun mengembalikan buku</p>
                     </div>}
-                <div className='flex justify-center my-4'>
+            </div>
+                <div className='flex justify-center my-4 w-full'>
                     <Stack spacing={2}>
                         <Pagination count={search.maxPage} color="primary" onChange={pageNumberHandler} />
                     </Stack>
                 </div>
-            </div>
         </div>
     )
 }
