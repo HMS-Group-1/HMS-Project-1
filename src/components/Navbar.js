@@ -28,6 +28,10 @@ function Navbar() {
 			console.log(error);
 		}
 	};
+	const EditUserHandler = async () =>{
+		navigateTo('/EditUser')
+	}
+
 	return (
 		<div className="flex my-4  tablet:justify-between w-full tablet:my-4 desktop:z-20">
 			<div className="w-1/2">
@@ -44,6 +48,11 @@ function Navbar() {
 				</div>
 			) : (
 				<div className="flex gap-2 justify-end w-1/2">
+					<Link to="/">
+						<button onClick={logOutHandler} className="bg-merahTua text-white px-3 py-2 rounded-md">
+							Logout
+						</button>
+					</Link>
 					<div className="w-10 h-10 bg-yellow-300 rounded-full">
 						<p onClick={menuHandler} className="w-full h-full relative hover:cursor-pointer flex justify-center items-center text-lg text-white font-medium">
 							{getInitials(isLogin.nama)}
@@ -62,6 +71,9 @@ function Navbar() {
 									</Link>
 									<Link to="/history_peminjaman">
 										<li className="text-sm hover:bg-blue-500 py-1 text-white pl-2">History Peminjaman</li>
+									</Link>
+									<Link to="/EditUser">
+										<li className="text-sm hover:bg-blue-500 py-1 text-white pl-2">EditUser</li>
 									</Link>
 									<Link to="/">
 										<li className="text-sm hover:bg-blue-500 py-1 text-white pl-2" onClick={logOutHandler}>

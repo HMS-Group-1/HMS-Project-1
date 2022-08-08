@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { ListGambarBuku } from "../helpers/ListGambarBuku";
 import "../styles/KembalikanBuku.css"
 import "../styles/Navbar.css"

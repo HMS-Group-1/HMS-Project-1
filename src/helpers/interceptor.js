@@ -17,8 +17,9 @@ const responseHandler = (response) => {
 };
 
 const errorHandler = (error) => {
-	window.location.href = '/';
-	localStorage.removeItem('isLogin');
+	// window.location.href = '/';
+	// localStorage.removeItem('isLogin');
+
 	return Promise.reject(error);
 };
 
@@ -31,5 +32,4 @@ throughMiddleware.interceptors.response.use(
 	(response) => responseHandler(response),
 	(error) => errorHandler(error)
 );
-
 export default throughMiddleware;

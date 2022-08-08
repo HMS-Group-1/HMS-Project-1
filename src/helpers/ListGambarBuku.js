@@ -9,6 +9,7 @@ export const ListGambarBuku = [
         name: 'Perahu Kertas',
         author :'Bambang',
         rating :'7',
+        category : 'Novel',
         tahun :'2011',
         image: Buku1, 
         sinopsis :"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
@@ -19,6 +20,7 @@ export const ListGambarBuku = [
         name: 'Blue Moon',
         author :'Agus',
         rating :'9',
+        category : 'Novel',
         tahun :'2012',
         image: Buku2, 
         sinopsis :"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
@@ -28,6 +30,7 @@ export const ListGambarBuku = [
         name: 'Jungle Book',
         author :'Tono',
         rating :'8',
+        category : 'Novel',
         tahun :'2009',
         image: Buku3, 
         sinopsis :"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
