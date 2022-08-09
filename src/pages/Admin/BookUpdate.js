@@ -40,7 +40,7 @@ const GetBookById = () => {
 	}, []);
 
 	const theBook = async () => {
-		const response = await axios.get(`http://localhost:5000/admin/book/${id}`);
+		const response = await axios.get(`http://localhost:5000/kategori/book/${id}`);
 		setjudul_buku(response.data.judul_buku);
 		setSelectedKategori(response.data.kategori_id);
 		setDeskripsi(response.data.deskripsi);
