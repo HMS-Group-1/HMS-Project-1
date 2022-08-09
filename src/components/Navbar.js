@@ -28,14 +28,16 @@ function Navbar() {
 			console.log(error);
 		}
 	};
-	const EditUserHandler = async () =>{
+	const EditUserHandler = async () => {
 		navigateTo('/EditUser')
 	}
 
 	return (
 		<div className="flex my-4  tablet:justify-between w-full tablet:my-4 desktop:z-20">
 			<div className="w-1/2">
-				<img src={Logo} className="w-40" alt="" />
+				<Link to='/book'>
+					<img src={Logo} className="w-40" alt="" />
+				</Link>
 			</div>
 			{!isLogin.status ? (
 				<div className="flex gap-2 justify-end w-1/2">

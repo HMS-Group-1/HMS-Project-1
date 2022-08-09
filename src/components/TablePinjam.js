@@ -170,7 +170,7 @@ const TablePinjam = () => {
 										<th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 											{number++}
 										</th>
-										<Link to={`detail/${book.id}`}>
+										<Link to={`/book/detail/${book.id}`}>
 											<td className="py-4 px-6">{book.judul_buku}</td>
 										</Link>
 										<td className="py-4 px-6 hover:text-slate-900">{toTitleCase(book.Kategori_id.kategori_nama)}</td>
