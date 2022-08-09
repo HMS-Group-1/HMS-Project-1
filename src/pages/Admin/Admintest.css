@@ -1,0 +1,20 @@
+* {
+	font-size: 20px;
+}
+
+h1 {
+	font-size: 25px !important;
+	margin-top: 20px !important;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 20px;
+}
+
+
+.container {
+	display: flex;
+	flex-direction: column;
+}
