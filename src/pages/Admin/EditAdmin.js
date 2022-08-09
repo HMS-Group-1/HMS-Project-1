@@ -22,7 +22,7 @@ const EditAdmin = () => {
         no_telp:no_telp,
         role:role
       });
-      navigate("/");
+      navigate("/admin/user");
     } catch (error) {
       console.log(error);
     }
@@ -92,7 +92,7 @@ const EditAdmin = () => {
               />
             </div>
           </div>
-          <div className="col-12">
+          {/* <div className="col-12">
             <label className="font-bold text-2xl justify-start flex-col rounded-md font-poppins">Role</label>
                 <select
                   value={role}
@@ -102,10 +102,8 @@ const EditAdmin = () => {
                   <option value="admin">admin</option>
                   <option value="anggota">anggota</option>
                 </select>
-          </div>
-          <div>
+          </div> */}
             <button type="submit" className='bg-biru text-white px-2 py-1 rounded-md'>Update</button>
-          </div>
           </form>
       </div>
     </div>

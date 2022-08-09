@@ -65,7 +65,7 @@ const DetailBuku = () => {
             <div class="row mx-3 my-5">
                 <div class='col-4'></div>
                 <div class='col-4'>
-                    <img src={Logo} alt=''></img>
+                    <img src={Logo} alt='' className="w-[400px]"></img>
                 </div>
                 <div class='col-3'></div>
             </div>
