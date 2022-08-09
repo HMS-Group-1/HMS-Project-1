@@ -94,7 +94,7 @@ const Login = () => {
 						</button>
 						<p className="inline-block align-baseline font-semibold text-sm text-blue-500 tablet:pt-2 ">
 							Belum punya akun?{' '}
-							<Link className="hover:underline" to={'register'}>
+							<Link className="hover:underline" to={'/register'}>
 								Daftar Sekarang!
 							</Link>
 						</p>
