@@ -8,7 +8,11 @@ import KembalikanBuku from './pages/kembalikanbuku';
 import Register from './pages/Register';
 import ProtectedRoute from './components/ProtectedRoute';
 import DetailBuku from './pages/detailBuku';
-
+import EditAdmin from './pages/Admin/EditAdmin';
+import UserList from './pages/Admin/UserList';
+import BookList from './pages/Admin/BookList';
+import BookCreate from './pages/Admin/BookCreate';
+import BookUpdate from './pages/Admin/BookUpdate';
 import HistoryPeminjaman from './pages/HistoryPeminjaman';
 import Home from './pages/Home';
 
@@ -23,6 +27,11 @@ function Router() {
 			{/* <Route path="/pinjambuku" element={<PinjamBuku />} />
 			<Route path="/kembalikanbuku" element={<PinjamBuku />} /> */}
 			<Route path="/EditUser" element={<EditUser />} />
+			<Route path="/admin/user/edit/:id" element={<EditAdmin/>}/>
+			<Route path="/admin/user" element={<UserList/>}/>
+			<Route path="/admin/book" element={<BookList/>}/>
+			<Route path="/admin/updateBook/:id" element={<BookUpdate/>}/>
+			<Route path="/admin/createBook" element={<BookCreate/>}/>
 			<Route
 				path="/book"
 				element={
