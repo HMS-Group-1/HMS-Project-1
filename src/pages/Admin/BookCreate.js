@@ -63,7 +63,7 @@ const Bookcreate = () => {
 					'Content-type': 'multipart/form-data',
 				},
 			});
-			navigateTo('/');
+			navigateTo('/admin/book');
 		} catch (error) {
 			if (error.response.data.errors) {
 				setJudulError('');

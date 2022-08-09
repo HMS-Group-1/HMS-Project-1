@@ -44,13 +44,9 @@ const UserList = () => {
 		}
 	};
 
-  
-
-  
-
   return (
 
-    <div className="desktop:sticky desktop:top-0 desktop:z-20 desktop:pb-1 bg-white rounded-b-lg">
+    <div className="desktop:sticky desktop:top-0 desktop:z-20 desktop:pb-1 bg-white rounded-b-lg p-5">
     <div className="flex gap-2 ">
       <Link to="/">
         <button onClick={logOutHandler} className="bg-merahTua text-white px-3 py-2 rounded-md flex">
@@ -61,6 +57,20 @@ const UserList = () => {
         <p onClick={menuHandler} className="w-full h-full relative hover:cursor-pointer flex justify-center items-center text-lg text-white font-medium">
           {getInitials(isLogin.nama)}
         </p>
+        {menu && (
+							<div className="bg-blue-400 z-20 mt-1 rounded-md w-[180px] py-2 absolute left-3 top-11">
+								<ul className="flex flex-col gap-2">
+									<Link to="/admin/book">
+										<li className="text-sm hover:bg-blue-500 py-1 text-white pl-2">List Buku</li>
+									</Link>
+									<Link to="/">
+										<li className="text-sm hover:bg-blue-500 py-1 text-white pl-2" onClick={logOutHandler}>
+											Keluar
+										</li>
+									</Link>
+								</ul>
+							</div>
+						)}
       </div>
     </div><br /><div className="overflow-x-auto relative shadow-md sm:rounded-lg">
         <div>

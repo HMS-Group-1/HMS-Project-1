@@ -58,22 +58,53 @@ const GetBook = () => {
 		setMenu(!menu);
 	};
 	
+	function getInitials(string) {
+		var names = string.split(' '),
+			initials = names[0].substring(0, 1).toUpperCase();
+		
+		if (names.length > 1) {
+			initials += names[names.length - 1].substring(0, 1).toUpperCase();
+		}
+		return initials;
+	};
 
 
 	return (
 		<>
-		<div>
-		
-		</div>
-			<div className="mt-2 p-5 font-sans">
-				<img src={Logo} alt="logo" className="mb-5 w-[300px]" />
-				<h1 className='text-center'>Daftar Buku</h1>
-				<br /><br /><br/>
-				<Link to="/">
-			<button onClick={logOutHandler} className="bg-merahTua text-white px-3 py-1 rounded-md float-right">
+		<div className="flex w-full items-center p-5">
+			<div className="w-[80px] h-[80px] px-3 py-2 bg-yellow-300 rounded-full">
+        	<p onClick={menuHandler} className="w-full h-full relative hover:cursor-pointer flex justify-center items-center text-lg text-white font-medium">
+    		{getInitials(isLogin.nama)}
+        	</p>
+			{menu && (
+								<div className="bg-blue-400 z-20 mt-1 rounded-md w-[180px] py-2 absolute left-3 top-11">
+									<ul className="flex flex-col gap-2">
+										<Link to="/admin/user">
+											<li className="text-sm hover:bg-blue-500 py-1 text-white pl-2">User List</li>
+										</Link>
+										<Link to="/">
+											<li className="text-sm hover:bg-blue-500 py-1 text-white pl-2" onClick={logOutHandler}>
+												Keluar
+											</li>
+										</Link>
+									</ul>
+								</div>
+							)}
+      </div>
+	  <Link to="/">
+			<button onClick={logOutHandler} className="bg-merahTua text-white px-3 py-1 ml-3 rounded-md">
 				Logout
 			</button>
 		</Link>
+	  </div>
+		<div>
+		
+		</div>
+			<div className=" p-5 font-sans">
+				<img src={Logo} alt="logo" className="mb-5 w-[300px]" />
+				<h1 className='text-center'>Daftar Buku</h1>
+				<br /><br /><br/>
+				
 				<Link to={`/admin/createBook`} className="bg-biru text-white px-3 py-1 rounded-md">Create new</Link>
 				<br /><br />
 				{response.length > 0
