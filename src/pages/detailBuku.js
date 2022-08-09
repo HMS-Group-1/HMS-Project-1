@@ -8,10 +8,8 @@ import { ContextProvider } from "../helpers/context.js";
 
 const DetailBuku = () => {
     const params = useParams();
-    const context = useContext(ContextProvider);
     const { isLogin } = useContext(ContextProvider);
     const [books, setBookShow] = useState([]);
-    const [kategori, setKategori] = useState('')
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
