@@ -207,13 +207,13 @@ const EditUser = () => {
 					)}
 
 					<div class="pt-4 desktop:flex-row tablet:flex tablet:flex-col mobile:flex mobile:flex-col">
-						<button class="bg-red-500 w-1/12 text-white w-full font-bold py-3 px-4 mx-1 rounded-md mb-3 focus:outline-none focus:shadow-outline" onClick={kembali}>
+						<button class="bg-red-500 w-1/12 text-white  font-bold py-3 px-4 mx-1 rounded-md mb-3 focus:outline-none focus:shadow-outline" onClick={kembali}>
 							kembali
 						</button>
-						<button class="bg-green-500 w-1/12 text-white w-full font-bold py-3 px-4 mx-1 rounded-md mb-3 focus:outline-none focus:shadow-outline" onClick={GantiPass}>
+						<button class="bg-green-500 w-1/12 text-white  font-bold py-3 px-4 mx-1 rounded-md mb-3 focus:outline-none focus:shadow-outline" onClick={GantiPass}>
 							Ganti Password
 						</button>
-						<button class="bg-blue-500 w-1/12 text-white w-full font-bold py-3 px-4 mx-1 rounded-md mb-3 focus:outline-none focus:shadow-outline" type="submit">
+						<button class="bg-blue-500 w-1/12 text-white  font-bold py-3 px-4 mx-1 rounded-md mb-3 focus:outline-none focus:shadow-outline" type="submit">
 							Submit
 						</button>
 					</div>
