@@ -1,21 +1,46 @@
 import React from 'react';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import FacebookIcon from '@mui/icons-material/Facebook';
 import '../styles/Footer.css';
 
 
 
 function Footer() {
   return (
-    <div className='footer'>
-        <div className='flex justify-center content-center items-center m-auto gap-4'>
-            <InstagramIcon className='w-20 text-slate-900 cursor-pointer' />
-            <TwitterIcon className='w-20 text-slate-900 cursor-pointer' />
-            <FacebookIcon className='w-20 text-slate-900 cursor-pointer' />
+      <div className='flex tablet:flex-row flex-col flex-wrap justify-between mt-8 w-full relative items-start  bottom-[-140px]'>
+        <div className="member">
+          <p className='text-slate-800 font-semibold text-medium mb-4'>Member</p>
+          <ul>
+            <li className='cursor-pointer text-slate-600 text-sm font-normal mb-2'>Book by Popularity</li>
+            <li className='cursor-pointer text-slate-600 text-sm font-normal mb-2'>Book by Name</li>
+            <li className='cursor-pointer text-slate-600 text-sm font-normal mb-2'>Book Resource</li>
+            <li className='cursor-pointer text-slate-600 text-sm font-normal mb-2'>Testimoni</li>
+          </ul>
         </div>
-            <p className='text-slate-900 text-sm'> &copy; 2022 Copyright : BukaBuku</p>
-    </div>
+        <div className="company mt-4 tablet:mt-0">
+          <p className='text-slate-800 font-semibold text-medium mb-4'>Company</p>
+          <ul>
+            <li className='cursor-pointer text-slate-600 text-sm font-normal mb-2'>Book Advertisement</li>
+            <li className='cursor-pointer text-slate-600 text-sm font-normal mb-2'>Ads with Us</li>
+            <li className='cursor-pointer text-slate-600 text-sm font-normal mb-2'>Company Profile</li>
+          </ul>
+        </div>
+        <div className="about mt-4 tablet:mt-0">
+          <p className='text-slate-800 font-semibold text-medium mb-4'>About BukuBuku</p>
+          <ul>
+            <li className='cursor-pointer text-slate-600 text-sm font-normal mb-2'>About Us</li>
+            <li className='cursor-pointer text-slate-600 text-sm font-normal mb-2'>Career with Us</li>
+            <li className='cursor-pointer text-slate-600 text-sm font-normal mb-2'>International Partner</li>
+          </ul>
+        </div>
+        <div className="contact mt-4 tablet:mt-0">
+          <p className='text-slate-800 font-semibold text-medium mb-4'>Contact</p>
+          <ul>
+            <li className='cursor-pointer text-slate-600 text-sm font-normal mb-2'>Contact Us</li>
+            <li className='cursor-pointer text-slate-600 text-sm font-normal mb-2'>FAQ</li>
+            <li className='cursor-pointer text-slate-600 text-sm font-normal mb-2'>Feedback</li>
+            <li className='cursor-pointer text-slate-600 text-sm font-normal mb-2'>Social Media</li>
+          </ul>
+        </div>
+      </div>
   )
 }
 
