@@ -22,16 +22,28 @@ function Router() {
 			<Route path="/" element={<Home />} />
 			<Route path="/login" element={<Login />} />
 			<Route path="/register" element={<Register />} />
-			<Route path="/book" element={<ProtectedRoute><ListBooks /></ProtectedRoute>} />
-			<Route path="/book/detail/:id" element={<ProtectedRoute><DetailBuku /></ProtectedRoute>} />
-			{/* <Route path="/pinjambuku" element={<PinjamBuku />} />
-			<Route path="/kembalikanbuku" element={<PinjamBuku />} /> */}
+			<Route
+				path="/book"
+				element={
+					<ProtectedRoute>
+						<ListBooks />
+					</ProtectedRoute>
+				}
+			/>
+			<Route
+				path="/book/detail/:id"
+				element={
+					<ProtectedRoute>
+						<DetailBuku />
+					</ProtectedRoute>
+				}
+			/>
 			<Route path="/EditUser" element={<EditUser />} />
-			<Route path="/admin/user/edit/:id" element={<EditAdmin/>}/>
-			<Route path="/admin/user" element={<UserList/>}/>
-			<Route path="/admin/book" element={<BookList/>}/>
-			<Route path="/admin/updateBook/:id" element={<BookUpdate/>}/>
-			<Route path="/admin/createBook" element={<BookCreate/>}/>
+			<Route path="/admin/user/edit/:id" element={<EditAdmin />} />
+			<Route path="/admin/user" element={<UserList />} />
+			<Route path="/admin/book" element={<BookList />} />
+			<Route path="/admin/updateBook/:id" element={<BookUpdate />} />
+			<Route path="/admin/createBook" element={<BookCreate />} />
 			<Route
 				path="/book"
 				element={
