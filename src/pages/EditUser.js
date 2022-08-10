@@ -12,6 +12,9 @@ const EditUser = () => {
 	const [password, setNewPassword] = useState();
 	const [oldpassword, setOldPassword] = useState();
 	const [no_telp, setNo_telp] = useState();
+	const [namaError, setNamaError] = useState('');
+	const [emailError, setEmailError] = useState('');
+	const [no_telpError, setNo_telpError] = useState('');
 	const [errorNama, setErrorNama] = useState(false);
 	const [errorEmail, setErrorEmail] = useState(false);
 	const [errorPass, setErrorPass] = useState(false);
@@ -23,22 +26,24 @@ const EditUser = () => {
 	const submitData = async (e) => {
 		e.preventDefault();
 		if (nama === '' || nama === undefined) {
-			setErrorNama(true);
+			return setErrorNama(true);
 		}
 		if (email === '' || email === undefined) {
-			setErrorEmail(true);
+			return setErrorEmail(true);
+		}
+		if (no_telp === '' || no_telp === undefined) {
+			return setErrorTelp(true);
 		}
 		if (isChangePass) {
 			if (password === '' || password === undefined) {
-				setErrorPass(true);
+				return setErrorPass(true);
 			}
 			if (no_telp === '' || no_telp === undefined) {
-				setErrorTelp(true);
+				return setErrorTelp(true);
 			}
 		}
 		if ((nama !== undefined || nama !== '') && (email !== undefined || email !== '') && (no_telp !== '' || no_telp !== undefined)) {
 			try {
-				console.log('MASUK');
 				await axios.patch(`http://localhost:5000/updateuser`, {
 					nama: nama,
 					email: email,
@@ -101,7 +106,7 @@ const EditUser = () => {
 			<div class="row">
 				<div class="col-4"></div>
 				<div class="col-4">
-					<img src={Logo} alt="" className='w-[400px]'></img>
+					<img src={Logo} alt="" className="w-[400px]"></img>
 				</div>
 				<div class="col-3"></div>
 				<br></br>
