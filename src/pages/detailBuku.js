@@ -8,10 +8,8 @@ import { ContextProvider } from "../helpers/context.js";
 
 const DetailBuku = () => {
     const params = useParams();
-    const context = useContext(ContextProvider);
     const { isLogin } = useContext(ContextProvider);
     const [books, setBookShow] = useState([]);
-    const [kategori, setKategori] = useState('')
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
@@ -67,7 +65,7 @@ const DetailBuku = () => {
             <div class="row mx-3 my-5">
                 <div class='col-4'></div>
                 <div class='col-4'>
-                    <img src={Logo} alt=''></img>
+                    <img src={Logo} alt='' className="w-[400px]"></img>
                 </div>
                 <div class='col-3'></div>
             </div>

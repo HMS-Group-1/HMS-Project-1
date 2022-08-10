@@ -151,7 +151,7 @@ const Register = () => {
 						</button>
 						<p class="inline-block align-baseline font-bold text-sm text-blue-500 tablet:pt-2 ">
 							Sudah punya akun?{' '}
-							<Link className="hover:underline" to={'/'}>
+							<Link className="hover:underline" to={'/login'}>
 								{' '}
 								Masuk di sini
 							</Link>{' '}

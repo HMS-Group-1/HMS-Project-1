@@ -127,7 +127,7 @@ const TablePengembalian = () => {
 								<td className="py-4 px-6">{toTitleCase(book.tbl_buku.Rak_id.lokasi_rak)}</td>
 								<td className="py-4 px-6">
 									{book.isPinjam === true ? (
-										<p className="text-yellow-600 text-sm text-center font-medium bg-yellow-500/20 py-1 px-2 rounded-md">{diffInDays(book.tanggalPinjam) === 0 ? 1 : diffInDays(book.tanggalPinjam) } Hari</p>
+										<p className="text-yellow-600 text-sm text-center font-medium bg-yellow-500/20 py-1 px-2 rounded-md">{diffInDays(book.tanggalPinjam) === 0 ? 1 : diffInDays(book.tanggalPinjam)} Hari</p>
 									) : (
 										<p className="text-green-600 text-sm text-center font-medium bg-green-600/20 py-1 px-2 rounded-md">Dikembalikan</p>
 									)}
@@ -152,11 +152,11 @@ const TablePengembalian = () => {
 						<p className="m-auto ">Tidak ada buku yang telah dipinjam</p>
 					</div>
 				)}
-				<div className="flex justify-center my-4">
-					<Stack spacing={2}>
-						<Pagination count={search.maxPage} color="primary" onChange={pageNumberHandler} />
-					</Stack>
-				</div>
+			</div>
+			<div className="flex justify-center my-4">
+				<Stack spacing={2}>
+					<Pagination count={search.maxPage} color="primary" onChange={pageNumberHandler} />
+				</Stack>
 			</div>
 		</div>
 	);
