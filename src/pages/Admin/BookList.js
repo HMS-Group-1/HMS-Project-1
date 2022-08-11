@@ -29,7 +29,8 @@ const GetBook = () => {
 
 	const deleteBook = async (id) => {
 		try {
-			await notInterceptor.delete(`http://localhost:5000/admin/deleteBook/${id}`);
+			await axios.delete(`http://localhost:5000/admin/deleteBook/${id}`);
+			setResponse([]);
 			fetchBook();
 		} catch (error) {
 			console.log(error);
