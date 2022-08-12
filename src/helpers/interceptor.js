@@ -3,7 +3,7 @@ import axios from 'axios';
 const throughMiddleware = axios.create();
 
 const RequestHandler = async (request) => {
-	const response = await axios.get('https://hms-backend1.herokuapp.com/token');
+	const response = await axios.get('https://hms-backend1.herokuapp.com/token', { withCredentials: true });
 	request.headers.Authorization = `Bearer ${response.data.accessToken}`;
 
 	return request;
