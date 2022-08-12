@@ -67,7 +67,6 @@ const Bookcreate = () => {
 			navigateTo('/admin/book');
 		} catch (error) {
 			if (error.response.data.errors) {
-				console.log(error.response.data.errors);
 				setJudulError('');
 				setKategoriError('');
 				setDeskripsiError('');
