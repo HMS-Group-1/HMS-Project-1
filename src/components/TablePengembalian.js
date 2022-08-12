@@ -20,13 +20,13 @@ const TablePengembalian = () => {
 	});
 
 	const kembaliHandler = async (id) => {
-		const res = await axios.get('http://localhost:5000/token', {
+		const res = await axios.get('https://hms-backend1.herokuapp.com/token', {
 			withCredentials: true,
 		});
 		const tokenRef = res.data.accessToken;
 		try {
 			await axios.patch(
-				`http://localhost:5000/kembalikan/${id}`,
+				`https://hms-backend1.herokuapp.com/kembalikan/${id}`,
 				{
 					data: {
 						userId: context.userId,
@@ -54,11 +54,11 @@ const TablePengembalian = () => {
 	};
 
 	const getListPinjam = async () => {
-		const res = await axios.get('http://localhost:5000/token', {
+		const res = await axios.get('https://hms-backend1.herokuapp.com/token', {
 			withCredentials: true,
 		});
 		const tokenRef = res.data.accessToken;
-		const response = await axios.get('http://localhost:5000/listPinjam', {
+		const response = await axios.get('https://hms-backend1.herokuapp.com/listPinjam', {
 			params: {
 				userId: context.userId,
 				page: search.page,

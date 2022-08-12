@@ -11,7 +11,6 @@ import searchIllustration from '../assets/searching-data.svg';
 import Footer from '../components/Footer';
 import { ContextProvider } from '../helpers/context';
 
-
 const ListBooks = () => {
 	const { isLogin } = useContext(ContextProvider);
 	const [books, setBooks] = useState([]);
@@ -23,7 +22,7 @@ const ListBooks = () => {
 	});
 
 	const getBooks = async () => {
-		const response = await axios.get('http://localhost:5000/book', {
+		const response = await axios.get('https://hms-backend1.herokuapp.com/book', {
 			params: {
 				page: search.page,
 				limit: 15,
@@ -49,7 +48,7 @@ const ListBooks = () => {
 	const btnSearchHandler = async () => {
 		setLoading(true);
 		const input = document.getElementById('search').value;
-		const response = await axios.get('http://localhost:5000/book', {
+		const response = await axios.get('https://hms-backend1.herokuapp.com/book', {
 			params: {
 				page: 0,
 				limit: 15,
@@ -68,7 +67,7 @@ const ListBooks = () => {
 		const input = document.getElementById('search').value;
 		if (e.key === 'Enter') {
 			setLoading(true);
-			const response = await axios.get('http://localhost:5000/book', {
+			const response = await axios.get('https://hms-backend1.herokuapp.com/book', {
 				params: {
 					page: 0,
 					limit: 15,
@@ -95,9 +94,9 @@ const ListBooks = () => {
 			<div className="flex-col relative m-4 tablet:w-[90%] desktop:max-w-[80%] laptop:-w-[90%] tablet:m-auto tablet:mb-4 h-[100%]">
 				<div className="desktop:sticky desktop:top-0 desktop:z-20 desktop:pb-1 bg-white rounded-b-lg">
 					<Navbar />
-					<div className='w-full tablet:hidden bg-gradient-to-r from-cyan-400 to-blue-600 py-4 rounded-md justify-center'>
-						<p className='text-lg text-center font-semibold text-white'>{`Hello, ${toTitleCase(isLogin.nama)}`}</p>
-						<p className='text-sm text-center font-medium text-white'>Find a best book for you</p>
+					<div className="w-full tablet:hidden bg-gradient-to-r from-cyan-400 to-blue-600 py-4 rounded-md justify-center">
+						<p className="text-lg text-center font-semibold text-white">{`Hello, ${toTitleCase(isLogin.nama)}`}</p>
+						<p className="text-sm text-center font-medium text-white">Find a best book for you</p>
 					</div>
 					<div className="my-2 flex mb-4 desktop:mb-8">
 						<input type="text" id="search" className="py-2 px-4 w-full shadow appearance-none border rounded leading-tight focus:outline-none focus:shadow-outline" onKeyDown={handleKeydown} placeholder="Cari nama atau deskripsi..." />
@@ -142,7 +141,7 @@ const ListBooks = () => {
 						</Stack>
 					</div>
 				)}
-			<Footer/>
+				<Footer />
 			</div>
 		</div>
 	);

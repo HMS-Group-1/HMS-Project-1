@@ -18,7 +18,7 @@ const Login = () => {
 		e.preventDefault();
 		try {
 			await axios
-				.post('http://localhost:5000/login', {
+				.post('https://hms-backend1.herokuapp.com/login', {
 					email: email,
 					password: password,
 				})

@@ -17,13 +17,13 @@ const UserList = () => {
 	}, []);
 
 	const getUsers = async () => {
-		const response = await axios.get('http://localhost:5000/admin/user/');
+		const response = await axios.get('https://hms-backend1.herokuapp.com/admin/user/');
 		setUser(response.data);
 	};
 
 	const deleteUser = async (id) => {
 		try {
-			await axios.delete(`http://localhost:5000/admin/deleteUser/${id}`);
+			await axios.delete(`https://hms-backend1.herokuapp.com/admin/deleteUser/${id}`);
 			getUsers();
 		} catch (error) {
 			console.log(error);
@@ -35,7 +35,7 @@ const UserList = () => {
 
 	const logOutHandler = async () => {
 		try {
-			await notInterceptor.delete('http://localhost:5000/logout');
+			await notInterceptor.delete('https://hms-backend1.herokuapp.com/logout');
 			setIsLogin({ nama: '', id: null, status: false });
 			localStorage.removeItem('isLogin');
 			navigateTo('/');

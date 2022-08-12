@@ -40,7 +40,7 @@ const GetBookById = () => {
 	}, []);
 
 	const theBook = async () => {
-		const response = await axios.get(`http://localhost:5000/kategori/book/${id}`);
+		const response = await axios.get(`https://hms-backend1.herokuapp.com/kategori/book/${id}`);
 		setjudul_buku(response.data.judul_buku);
 		setSelectedKategori(response.data.kategori_id);
 		setDeskripsi(response.data.deskripsi);
@@ -51,12 +51,12 @@ const GetBookById = () => {
 	};
 
 	const getKategori = async () => {
-		const response = await axios.get('http://localhost:5000/kategori');
+		const response = await axios.get('https://hms-backend1.herokuapp.com/kategori');
 		setKategori_id(response.data);
 	};
 
 	const getRak = async () => {
-		const response = await axios.get('http://localhost:5000/rak');
+		const response = await axios.get('https://hms-backend1.herokuapp.com/rak');
 		setRak_id(response.data);
 	};
 
@@ -81,7 +81,7 @@ const GetBookById = () => {
 		formData.append('rak_id', selectedRak);
 		formData.append('tahun_terbit', tahun_terbit);
 		try {
-			await axios.patch(`http://localhost:5000/admin/updateBook/${id}`, formData, {
+			await axios.patch(`https://hms-backend1.herokuapp.com/admin/updateBook/${id}`, formData, {
 				headers: {
 					'Content-type': 'multipart/form-data',
 				},

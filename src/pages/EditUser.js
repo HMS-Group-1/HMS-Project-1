@@ -46,7 +46,7 @@ const EditUser = () => {
 		if ((nama !== undefined || nama !== '') && (email !== undefined || email !== '') && (no_telp !== '' || no_telp !== undefined || no_telp.length === 10)) {
 			try {
 				console.log('MASUK');
-				await axios.patch(`http://localhost:5000/updateuser`, {
+				await axios.patch(`https://hms-backend1.herokuapp.com/updateuser`, {
 					nama: nama,
 					email: email,
 					password: password,
@@ -62,7 +62,7 @@ const EditUser = () => {
 			if (isChangePass) {
 				if ((password !== undefined || password !== '') && (oldpassword !== undefined || oldpassword !== '')) {
 					try {
-						await axios.patch(`http://localhost:5000/changePassword`, {
+						await axios.patch(`https://hms-backend1.herokuapp.com/changePassword`, {
 							oldPassword: oldpassword,
 							newPassword: password,
 						});
@@ -79,7 +79,7 @@ const EditUser = () => {
 		getUser();
 	}, []);
 	const getUser = async () => {
-		const { data: res } = await axios.get(`http://localhost:5000/userdata`);
+		const { data: res } = await axios.get(`https://hms-backend1.herokuapp.com/userdata`);
 		userData = res;
 		console.log(userData);
 		if (userData != null || userData !== undefined) {

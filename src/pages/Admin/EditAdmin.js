@@ -17,7 +17,7 @@ const EditAdmin = () => {
 	const updateUser = async (e) => {
 		e.preventDefault();
 		try {
-			await axios.patch(`http://localhost:5000/admin/updateUser/${id}`, {
+			await axios.patch(`https://hms-backend1.herokuapp.com/admin/updateUser/${id}`, {
 				nama: nama,
 				email: email,
 				no_telp: no_telp,
@@ -39,7 +39,7 @@ const EditAdmin = () => {
 	};
 
 	const getUserById = async () => {
-		const response = await axios.get(`http://localhost:5000/admin/user/${id}`);
+		const response = await axios.get(`https://hms-backend1.herokuapp.com/admin/user/${id}`);
 		setName(response.data.nama);
 		setEmail(response.data.email);
 		setNoTelp(response.data.no_telp);

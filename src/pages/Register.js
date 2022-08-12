@@ -19,7 +19,7 @@ const Register = () => {
 	const register = async (e) => {
 		e.preventDefault();
 		try {
-			await axios.post('http://localhost:5000/register', {
+			await axios.post('https://hms-backend1.herokuapp.com/register', {
 				nama: nama,
 				email: email,
 				password: password,
