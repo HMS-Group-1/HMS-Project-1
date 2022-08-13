@@ -6,8 +6,6 @@ import { ContextProvider } from '../helpers/context';
 import axios from 'axios';
 import { getInitials } from '../helpers/constant';
 
-
-
 function Navbar() {
 	const { setIsLogin } = useContext(ContextProvider);
 	const navigateTo = useNavigate();
@@ -20,22 +18,22 @@ function Navbar() {
 
 	const logOutHandler = async () => {
 		try {
-			await axios.delete('http://localhost:5000/logout');
-			localStorage.removeItem('isLogin');
+			await notInterceptor.delete('http://localhost:5000/logout');
 			setIsLogin({ nama: '', id: null, status: false });
+			localStorage.removeItem('isLogin');
 			navigateTo('/');
 		} catch (error) {
 			console.log(error);
 		}
 	};
 	const EditUserHandler = async () => {
-		navigateTo('/EditUser')
-	}
+		navigateTo('/EditUser');
+	};
 
 	return (
 		<div className="flex my-4  tablet:justify-between w-full tablet:my-4 desktop:z-20">
 			<div className="w-1/2">
-				<Link to='/book'>
+				<Link to="/book">
 					<img src={Logo} className="w-40" alt="" />
 				</Link>
 			</div>
