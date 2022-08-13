@@ -18,9 +18,9 @@ function Navbar() {
 
 	const logOutHandler = async () => {
 		try {
-			await axios.delete('https://hms-backend1.herokuapp.com/logout');
-			localStorage.removeItem('isLogin');
+			await notInterceptor.delete('https://hms-backend1.herokuapp.com/logout');
 			setIsLogin({ nama: '', id: null, status: false });
+			localStorage.removeItem('isLogin');
 			navigateTo('/');
 		} catch (error) {
 			console.log(error);
