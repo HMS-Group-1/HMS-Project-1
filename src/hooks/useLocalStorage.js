@@ -16,7 +16,7 @@ export const useLocalStorage = (key, initialValue) => {
 
 	const changeIsLogin = (value) => {
 		try {
-			console.log(Function);
+			// console.log(Function);
 			const valueToStore = value instanceof Function ? value(setLogin) : value;
 			console.log(valueToStore);
 			setIsLogin(valueToStore);
