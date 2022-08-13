@@ -3,7 +3,7 @@ import Logo from '../assets/logobukabuku.png';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Navbar.css';
 import { ContextProvider } from '../helpers/context';
-import axios from 'axios';
+import notInterceptor from 'axios';
 import { getInitials } from '../helpers/constant';
 
 function Navbar() {
