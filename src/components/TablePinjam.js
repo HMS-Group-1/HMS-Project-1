@@ -21,11 +21,11 @@ const TablePinjam = () => {
 	});
 
 	const getBooks = async () => {
-		const res = await axios.get('https://hms-backend1.herokuapp.com/token', {
+		const res = await axios.get('https://hms-backend-recreate.herokuapp.com/token', {
 			withCredentials: true,
 		});
 		const tokenRef = res.data.accessToken;
-		const response = await axios.get('https://hms-backend1.herokuapp.com/book', {
+		const response = await axios.get('https://hms-backend-recreate.herokuapp.com/book', {
 			params: {
 				page: search.page,
 				limit: 15,
@@ -53,11 +53,11 @@ const TablePinjam = () => {
 	const btnSearchHandler = async () => {
 		setLoading(true);
 		const input = document.getElementById('search').value;
-		const res = await axios.get('https://hms-backend1.herokuapp.com/token', {
+		const res = await axios.get('https://hms-backend-recreate.herokuapp.com/token', {
 			withCredentials: true,
 		});
 		const tokenRef = res.data.accessToken;
-		const response = await axios.get('https://hms-backend1.herokuapp.com/book', {
+		const response = await axios.get('https://hms-backend-recreate.herokuapp.com/book', {
 			params: {
 				page: 0,
 				limit: 12,
@@ -74,7 +74,7 @@ const TablePinjam = () => {
 	};
 
 	const handleKeydown = async (e) => {
-		const res = await axios.get('https://hms-backend1.herokuapp.com/token', {
+		const res = await axios.get('https://hms-backend-recreate.herokuapp.com/token', {
 			withCredentials: true,
 		});
 		const tokenRef = res.data.accessToken;
@@ -82,7 +82,7 @@ const TablePinjam = () => {
 		console.log(input);
 		if (e.key === 'Enter') {
 			setLoading(true);
-			const response = await axios.get('https://hms-backend1.herokuapp.com/book', {
+			const response = await axios.get('https://hms-backend-recreate.herokuapp.com/book', {
 				params: {
 					page: 0,
 					limit: 12,
@@ -100,13 +100,13 @@ const TablePinjam = () => {
 	};
 
 	const pinjamHandler = async (id) => {
-		const res = await axios.get('https://hms-backend1.herokuapp.com/token', {
+		const res = await axios.get('https://hms-backend-recreate.herokuapp.com/token', {
 			withCredentials: true,
 		});
 		const tokenRef = res.data.accessToken;
 		try {
 			await axios.post(
-				`https://hms-backend1.herokuapp.com/pinjam/${id}`,
+				`https://hms-backend-recreate.herokuapp.com/pinjam/${id}`,
 				{
 					data: {
 						userId: context.userId,

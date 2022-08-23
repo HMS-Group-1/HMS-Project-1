@@ -22,7 +22,7 @@ const ListBooks = () => {
 	});
 
 	const getBooks = async () => {
-		const response = await axios.get('https://hms-backend1.herokuapp.com/book', {
+		const response = await axios.get('https://hms-backend-recreate.herokuapp.com/book', {
 			params: {
 				page: search.page,
 				limit: 15,
@@ -48,7 +48,7 @@ const ListBooks = () => {
 	const btnSearchHandler = async () => {
 		setLoading(true);
 		const input = document.getElementById('search').value;
-		const response = await axios.get('https://hms-backend1.herokuapp.com/book', {
+		const response = await axios.get('https://hms-backend-recreate.herokuapp.com/book', {
 			params: {
 				page: 0,
 				limit: 15,
@@ -67,7 +67,7 @@ const ListBooks = () => {
 		const input = document.getElementById('search').value;
 		if (e.key === 'Enter') {
 			setLoading(true);
-			const response = await axios.get('https://hms-backend1.herokuapp.com/book', {
+			const response = await axios.get('https://hms-backend-recreate.herokuapp.com/book', {
 				params: {
 					page: 0,
 					limit: 15,

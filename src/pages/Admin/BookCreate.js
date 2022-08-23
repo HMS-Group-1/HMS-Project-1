@@ -30,12 +30,12 @@ const Bookcreate = () => {
 	}, []);
 
 	const getKategori = async () => {
-		const response = await axios.get('https://hms-backend1.herokuapp.com/kategori');
+		const response = await axios.get('https://hms-backend-recreate.herokuapp.com/kategori');
 		setKategori_id(response.data);
 	};
 
 	const getRak = async () => {
-		const response = await axios.get('https://hms-backend1.herokuapp.com/rak');
+		const response = await axios.get('https://hms-backend-recreate.herokuapp.com/rak');
 		setRak_id(response.data);
 	};
 
@@ -59,7 +59,7 @@ const Bookcreate = () => {
 		formData.append('rak_id', selectedRak);
 		formData.append('tahun_terbit', tahun_terbit);
 		try {
-			await axios.post(`https://hms-backend1.herokuapp.com/admin/createBook/`, formData, {
+			await axios.post(`https://hms-backend-recreate.herokuapp.com/admin/createBook/`, formData, {
 				headers: {
 					'Content-type': 'multipart/form-data',
 				},

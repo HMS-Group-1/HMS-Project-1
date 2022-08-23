@@ -18,12 +18,12 @@ const TableHistory = () => {
 		search_query: '',
 	});
 	const getListPinjam = async () => {
-		const res = await axios.get('https://hms-backend1.herokuapp.com/token', {
+		const res = await axios.get('https://hms-backend-recreate.herokuapp.com/token', {
 			withCredentials: true,
 		});
 		const tokenRef = res.data.accessToken;
 		// console.log(tokenRef)
-		const response = await axios.get('https://hms-backend1.herokuapp.com/listKembali', {
+		const response = await axios.get('https://hms-backend-recreate.herokuapp.com/listKembali', {
 			params: {
 				userId: context.userId,
 				page: search.page,
@@ -55,11 +55,11 @@ const TableHistory = () => {
 	const btnSearchHandler = async () => {
 		setLoading(true);
 		const input = document.getElementById('search').value;
-		const res = await axios.get('https://hms-backend1.herokuapp.com/token', {
+		const res = await axios.get('https://hms-backend-recreate.herokuapp.com/token', {
 			withCredentials: true,
 		});
 		const tokenRef = res.data.accessToken;
-		const response = await axios.get('https://hms-backend1.herokuapp.com/listKembali', {
+		const response = await axios.get('https://hms-backend-recreate.herokuapp.com/listKembali', {
 			params: {
 				userId: context.userId,
 				page: search.page,
@@ -81,14 +81,14 @@ const TableHistory = () => {
 	};
 
 	const handleKeydown = async (e) => {
-		const res = await axios.get('https://hms-backend1.herokuapp.com/token', {
+		const res = await axios.get('https://hms-backend-recreate.herokuapp.com/token', {
 			withCredentials: true,
 		});
 		const tokenRef = res.data.accessToken;
 		const input = document.getElementById('search').value;
 		if (e.key === 'Enter') {
 			setLoading(true);
-			const response = await axios.get('https://hms-backend1.herokuapp.com/listKembali', {
+			const response = await axios.get('https://hms-backend-recreate.herokuapp.com/listKembali', {
 				params: {
 					userId: context.userId,
 					page: search.page,

@@ -18,7 +18,7 @@ const Login = () => {
 		e.preventDefault();
 		try {
 			await axios
-				.post('https://hms-backend1.herokuapp.com/login', {
+				.post('https://hms-backend-recreate.herokuapp.com/login', {
 					email: email,
 					password: password,
 				})

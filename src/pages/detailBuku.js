@@ -16,7 +16,7 @@ const DetailBuku = () => {
 		getKategoris();
 	}, []);
 	const getKategoris = useCallback(async () => {
-		const { data: res } = await axios.get(`https://hms-backend1.herokuapp.com/kategori/book/${params.id}`);
+		const { data: res } = await axios.get(`https://hms-backend-recreate.herokuapp.com/kategori/book/${params.id}`);
 		setBookShow(res);
 		setTimeout(setLoading(true), 2000);
 	}, [params.id]);
@@ -31,13 +31,13 @@ const DetailBuku = () => {
 		navigate('/book');
 	}
 	const pinjamHandler = async (id) => {
-		const res = await axios.get('https://hms-backend1.herokuapp.com/token', {
+		const res = await axios.get('https://hms-backend-recreate.herokuapp.com/token', {
 			withCredentials: true,
 		});
 		const tokenRef = res.data.accessToken;
 		try {
 			await axios.post(
-				`https://hms-backend1.herokuapp.com/pinjam/${id}`,
+				`https://hms-backend-recreate.herokuapp.com/pinjam/${id}`,
 				{
 					data: {
 						userId: isLogin.id,

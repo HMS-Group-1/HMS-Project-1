@@ -23,13 +23,13 @@ const GetBook = () => {
 	}, []);
 
 	const fetchBook = async () => {
-		const response = await axios.get('https://hms-backend1.herokuapp.com/admin/book');
+		const response = await axios.get('https://hms-backend-recreate.herokuapp.com/admin/book');
 		setResponse(response.data);
 	};
 
 	const deleteBook = async (id) => {
 		try {
-			await axios.delete(`https://hms-backend1.herokuapp.com/admin/deleteBook/${id}`);
+			await axios.delete(`https://hms-backend-recreate.herokuapp.com/admin/deleteBook/${id}`);
 			setResponse([]);
 			fetchBook();
 		} catch (error) {
@@ -47,7 +47,7 @@ const GetBook = () => {
 
 	const logOutHandler = async () => {
 		try {
-			await notInterceptor.delete('https://hms-backend1.herokuapp.com/logout');
+			await notInterceptor.delete('https://hms-backend-recreate.herokuapp.com/logout');
 			setIsLogin({ nama: '', id: null, status: false });
 			localStorage.removeItem('isLogin');
 			navigateTo('/');
